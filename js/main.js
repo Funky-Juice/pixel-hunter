@@ -11,7 +11,7 @@ let loadTemplate = (templateName) => {
 let rulesElement = loadTemplate('rules');
 let rulesSubmit = rulesElement.querySelector('.rules__button');
 
-rulesElement.querySelector('.rules__input').oninput = () => {
+rulesElement.querySelector('.rules__input').oninput = function () {
   if (this.value) {
     rulesSubmit.removeAttribute('disabled');
   } else {
