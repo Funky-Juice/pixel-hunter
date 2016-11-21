@@ -6,4 +6,11 @@ const getElementFromTemplate = (templateName) => {
   return node.cloneNode(true);
 };
 
+// const getElementFromTemplate = (template) => {
+//   let node = document.createElement('span');
+//   let content = template.content ? template.content : template;
+//   node.appendChild(content);
+//   return node.cloneNode(true);
+// };
+
 export default getElementFromTemplate;
