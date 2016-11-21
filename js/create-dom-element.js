@@ -1,15 +1,7 @@
-// const createElementDOM = (string) => {
-//   let container = document.createElement('div');
-//   let content = string.content ? string.content : string;
-//   container.appendChild(content);
-//   return container.cloneNode(true);
-// };
-
-const createElementDOM = (string) => {
+const createElementDOM = (templateContent) => {
   let container = document.createElement('div');
-  let content = string.content ? string.content : string;
-  container.innerHTML = content;
-  return container.firstChild;
+  container.innerHTML = templateContent;
+  return container;
 };
 
 export default createElementDOM;

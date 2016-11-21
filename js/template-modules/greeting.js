@@ -1,7 +1,6 @@
 import createElementDOM from '../create-dom-element';
 
 const greetingTemplate = `\
-<template id="greeting">
   <div class="greeting  central--blur">
     <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
     <h1 class="greeting__asterisk">*</h1>
@@ -14,8 +13,7 @@ const greetingTemplate = `\
         Помни, главное — смотреть очень внимательно.</p>
     </div>
     <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
-  </div>
-</template>`;
+  </div>`;
 
 const greeting = createElementDOM(greetingTemplate);
 

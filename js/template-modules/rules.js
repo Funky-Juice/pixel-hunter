@@ -1,7 +1,6 @@
 import createElementDOM from '../create-dom-element';
 
 const rulesTemplate = `\
-<template id="rules">
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -25,8 +24,7 @@ const rulesTemplate = `\
       <input class="rules__input" type="text" placeholder="Ваше Имя">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
-  </div>
-</template>`;
+  </div>`;
 
 const rulesElement = createElementDOM(rulesTemplate);
 

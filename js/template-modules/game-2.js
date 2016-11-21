@@ -1,7 +1,6 @@
 import createElementDOM from '../create-dom-element';
 
 const gameTwoTemplate = `\
-<template id="game-2">
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -45,8 +44,7 @@ const gameTwoTemplate = `\
         <li class="stats__result stats__result--unknown"></li>
       </ul>
     </div>
-  </div>
-</template>`;
+  </div>`;
 
 const gameTwoElement = createElementDOM(gameTwoTemplate);
 
