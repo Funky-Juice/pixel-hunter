@@ -1,11 +1,3 @@
-// let loadTemplate = (templateName) => {
-//   let node = document.createElement('span');
-//   let template = document.getElementById(templateName);
-//   let content = template.content ? template.content : template;
-//   node.appendChild(content);
-//   return node.cloneNode(true);
-// };
-
 import intro from './template-modules/intro';
 import greeting from './template-modules/greeting';
 import rulesElement from './template-modules/rules';
@@ -15,7 +7,6 @@ import gameThreeElement from './template-modules/game-3';
 import stats from './template-modules/stats';
 
 // Rules
-// let rulesElement = loadTemplate('rules');
 let rulesSubmit = rulesElement.querySelector('.rules__button');
 
 rulesElement.querySelector('.rules__input').oninput = (evt) => {
@@ -44,13 +35,6 @@ let slides = [
   gameTwoElement,
   gameThreeElement,
   stats
-  // loadTemplate('intro'),
-  // loadTemplate('greeting'),
-  // rulesElement,
-  // loadTemplate('game-1'),
-  // loadTemplate('game-2'),
-  // loadTemplate('game-3'),
-  // loadTemplate('stats')
 ];
 let current = -1;
 

@@ -1,16 +1,15 @@
-const getElementFromTemplate = (templateName) => {
-  let node = document.createElement('span');
-  let template = document.getElementById(templateName);
-  let content = template.content ? template.content : template;
-  node.appendChild(content);
-  return node.cloneNode(true);
-};
-
-// const getElementFromTemplate = (template) => {
-//   let node = document.createElement('span');
-//   let content = template.content ? template.content : template;
-//   node.appendChild(content);
-//   return node.cloneNode(true);
+// const createElementDOM = (string) => {
+//   let container = document.createElement('div');
+//   let content = string.content ? string.content : string;
+//   container.appendChild(content);
+//   return container.cloneNode(true);
 // };
 
-export default getElementFromTemplate;
+const createElementDOM = (string) => {
+  let container = document.createElement('div');
+  let content = string.content ? string.content : string;
+  container.innerHTML = content;
+  return container.firstChild;
+};
+
+export default createElementDOM;
