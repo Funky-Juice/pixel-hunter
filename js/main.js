@@ -1,14 +1,12 @@
-let loadTemplate = (templateName) => {
-  let node = document.createElement('span');
-  let template = document.getElementById(templateName);
-  let content = template.content ? template.content : template;
-  node.appendChild(content);
-  return node.cloneNode(true);
-};
-
+import intro from './template-modules/intro';
+import greeting from './template-modules/greeting';
+import rulesElement from './template-modules/rules';
+import gameOneElement from './template-modules/game-1';
+import gameTwoElement from './template-modules/game-2';
+import gameThreeElement from './template-modules/game-3';
+import stats from './template-modules/stats';
 
 // Rules
-let rulesElement = loadTemplate('rules');
 let rulesSubmit = rulesElement.querySelector('.rules__button');
 
 rulesElement.querySelector('.rules__input').oninput = (evt) => {
@@ -20,7 +18,6 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 };
 
 // Slides changer
-
 let mainElement = document.getElementById('main');
 
 let switcher = document.createElement('div');
@@ -31,13 +28,13 @@ switcher.style.cssText = 'text-align: center';
 mainElement.after(switcher);
 
 let slides = [
-  loadTemplate('intro'),
-  loadTemplate('greeting'),
+  intro,
+  greeting,
   rulesElement,
-  loadTemplate('game-1'),
-  loadTemplate('game-2'),
-  loadTemplate('game-3'),
-  loadTemplate('stats')
+  gameOneElement,
+  gameTwoElement,
+  gameThreeElement,
+  stats
 ];
 let current = -1;
 
