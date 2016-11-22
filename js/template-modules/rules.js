@@ -1,4 +1,5 @@
 import createElementDOM from '../create-dom-element';
+import slidesDisplay from '../display-slides';
 
 const rulesTemplate = `\
   <header class="header">
@@ -27,5 +28,20 @@ const rulesTemplate = `\
   </div>`;
 
 const rulesElement = createElementDOM(rulesTemplate);
+
+const rulesSubmit = rulesElement.querySelector('.rules__button');
+
+rulesElement.querySelector('.rules__input').oninput = (evt) => {
+  if (evt.target.value) {
+    rulesSubmit.removeAttribute('disabled');
+  } else {
+    rulesSubmit.setAttribute('disabled', '');
+  }
+};
+
+rulesSubmit.onclick = (evt) => {
+  evt.preventDefault();
+  slidesDisplay(3);
+};
 
 export default rulesElement;
