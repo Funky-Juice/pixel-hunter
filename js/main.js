@@ -1,10 +1,5 @@
-import intro from './template-modules/intro';
-import greeting from './template-modules/greeting';
 import rulesElement from './template-modules/rules';
-import gameOneElement from './template-modules/game-1';
-import gameTwoElement from './template-modules/game-2';
-import gameThreeElement from './template-modules/game-3';
-import stats from './template-modules/stats';
+import {current, slidesDisplay} from './display-slides';
 
 // Rules
 let rulesSubmit = rulesElement.querySelector('.rules__button');
@@ -27,33 +22,16 @@ switcher.innerHTML = '' +
 switcher.style.cssText = 'text-align: center';
 mainElement.after(switcher);
 
-let slides = [
-  intro,
-  greeting,
-  rulesElement,
-  gameOneElement,
-  gameTwoElement,
-  gameThreeElement,
-  stats
-];
-let current = -1;
-
-let select = (index) => {
-  current = index;
-  mainElement.innerHTML = '';
-  mainElement.appendChild(slides[index]);
-};
-
 document.querySelector('.next').onclick = (e) => {
   e.preventDefault();
 
-  select(current + 1);
+  slidesDisplay(current + 1);
 };
 
 document.querySelector('.prev').onclick = (e) => {
   e.preventDefault();
 
-  select(current - 1);
+  slidesDisplay(current - 1);
 };
 
-select(0);
+slidesDisplay(0);
