@@ -35,7 +35,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
   if (evt.target.value) {
     rulesSubmit.removeAttribute('disabled');
   } else {
-    rulesSubmit.setAttribute('disabled', '');
+    rulesSubmit.disabled = (evt.target.value === '');
   }
 };
 
