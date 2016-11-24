@@ -1,4 +1,5 @@
 import createElementDOM from '../create-dom-element';
+import slidesDisplay from '../display-slides';
 
 const greetingTemplate = `\
   <div class="greeting  central--blur">
@@ -16,5 +17,10 @@ const greetingTemplate = `\
   </div>`;
 
 const greeting = createElementDOM(greetingTemplate);
+
+greeting.querySelector('.greeting__continue').onclick = (evt) => {
+  evt.preventDefault();
+  slidesDisplay(2);
+};
 
 export default greeting;

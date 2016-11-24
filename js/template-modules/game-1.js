@@ -1,4 +1,5 @@
 import createElementDOM from '../create-dom-element';
+import slidesDisplay from '../display-slides';
 
 const gameOneTemplate = `\
   <header class="header">
@@ -58,5 +59,14 @@ const gameOneTemplate = `\
   </div>`;
 
 const gameOneElement = createElementDOM(gameOneTemplate);
+
+const gameOneAnswer = gameOneElement.querySelectorAll('.game__answer');
+
+for (let i = 0; i < gameOneAnswer.length; i++) {
+  gameOneAnswer[i].onclick = (evt) => {
+    evt.preventDefault();
+    slidesDisplay(4);
+  };
+}
 
 export default gameOneElement;
