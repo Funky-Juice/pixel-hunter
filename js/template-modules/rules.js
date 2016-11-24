@@ -32,11 +32,7 @@ const rulesElement = createElementDOM(rulesTemplate);
 const rulesSubmit = rulesElement.querySelector('.rules__button');
 
 rulesElement.querySelector('.rules__input').oninput = (evt) => {
-  if (evt.target.value) {
-    rulesSubmit.removeAttribute('disabled');
-  } else {
-    rulesSubmit.disabled = (evt.target.value === '');
-  }
+  rulesSubmit.disabled = (!evt.target.value);
 };
 
 rulesSubmit.onclick = (evt) => {
