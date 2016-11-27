@@ -1,52 +1,23 @@
 import createElementDOM from '../create-dom-element';
 import slidesDisplay from '../display-slides';
-import {question, answer, indicators, gameStats} from '../game-const';
+import headerTemplate from './header';
+import {gameOne, gameStats, indicators} from '../game-const';
 
-const game = {
-  task: 'Угадайте для каждого изображения фото или рисунок?'
-};
-
-const header = `\
-<header class="header">
-  <div class="header__back">
-    <span class="back">
-      <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-      <img src="img/logo_small.png" width="101" height="44">
-    </span>
-  </div>
-  <h1 class="game__timer">${indicators.timer}</h1>
-  <div class="game__lives">
-    <img src="${indicators.lives.emptyHeart}" class="game__heart" alt="Life" width="32" height="32">
-    <img src="${indicators.lives.fullHeart}" class="game__heart" alt="Life" width="32" height="32">
-    <img src="${indicators.lives.fullHeart}" class="game__heart" alt="Life" width="32" height="32">
-  </div>
-</header>`;
-
-const content = `\
-<p class="game__task">${game.task}</p>
+const content = (data) =>`\
+<p class="game__task">${data.task}</p>
 <form class="game__content">
+
+  ${data.question.map((question) =>`
   <div class="game__option">
-    <img src="${question.one}" alt="Option 1" width="468" height="458">
-    <label class="game__answer game__answer--photo">
-      <input name="question1" type="radio" value="photo">
-      <span>${answer.photo}</span>
-    </label>
-    <label class="game__answer game__answer--paint">
-      <input name="question1" type="radio" value="paint">
-      <span>${answer.paint}</span>
-    </label>
-  </div>
-  <div class="game__option">
-    <img src="${question.two}" alt="Option 2" width="468" height="458">
-    <label class="game__answer  game__answer--photo">
-      <input name="question2" type="radio" value="photo">
-      <span>${answer.photo}</span>
-    </label>
-    <label class="game__answer  game__answer--paint">
-      <input name="question2" type="radio" value="paint">
-      <span>${answer.paint}</span>
-    </label>
-  </div>
+    <img src="${question.image}" alt="${question.alt}" width="468" height="458">
+    
+    ${question.answer.map((answer) =>`
+    <label class="game__answer  ${answer.class}">
+      <input name="${answer.name}" type="radio" value="${answer.value}">
+      <span>${answer.text}</span>
+    </label>`).join('')}
+    
+  </div>`).join('')}
 </form>`;
 
 const stats = `\
@@ -66,9 +37,9 @@ const stats = `\
 </div>`;
 
 const gameOneTemplate = `\
-${header}
+${headerTemplate(indicators)}
 <div class="game">
-  ${content}
+  ${content(gameOne)}
   ${stats}
 </div>`;
 

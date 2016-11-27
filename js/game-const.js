@@ -1,25 +1,3 @@
-/* пока не ясно, как правильно описать структуру данных. сейчас это скорее "заглушки"
- главный вопрос - как связать ответы и вопросы
- статистика явно должна иметь более сложную структуру*/
-export const question = {
-  one: 'http://placehold.it/468x458',
-  two: 'http://placehold.it/468x458',
-  three: 'http://placehold.it/468x458',
-  four: 'http://placehold.it/468x458',
-  five: 'http://placehold.it/468x458',
-  six: 'http://placehold.it/468x458'
-};
-
-export const answer = {
-  photo: 'Фото',
-  paint: 'Рисунок'
-};
-
-export const verdict = {
-  right: 1,
-  wrong: 0
-};
-
 export const gameStats = {
   wrong: 'wrong',
   slow: 'slow',
@@ -29,9 +7,93 @@ export const gameStats = {
 };
 
 export const indicators = {
-  timer: 'NN',
-  lives: {
-    emptyHeart: 'img/heart__empty.svg',
-    fullHeart: 'img/heart__full.svg'
-  }
+  timer: 0,
+  lives: ['empty', 'full', 'full']
+};
+
+export const gameOne = {
+  task: 'Угадайте для каждого изображения фото или рисунок?',
+  question: [
+    {
+      image: 'http://placehold.it/468x458',
+      alt: 'Option 1',
+      answer: [
+        {
+          text: 'Фото',
+          value: 'photo',
+          name: 'question1',
+          class: 'game__answer--photo'
+        },
+        {
+          text: 'Рисунок',
+          value: 'paint',
+          name: 'question1',
+          class: 'game__answer--paint'
+        }
+      ]
+    },
+    {
+      image: 'http://placehold.it/468x458',
+      alt: 'Option 2',
+      answer: [
+        {
+          text: 'Фото',
+          value: 'photo',
+          name: 'question2',
+          class: 'game__answer--photo'
+        },
+        {
+          text: 'Рисунок',
+          value: 'paint',
+          name: 'question2',
+          class: 'game__answer--paint'
+        }
+      ]
+    }
+  ]
+};
+
+export const gameTwo = {
+  task: 'Угадай, фото или рисунок?',
+  question: [
+    {
+      image: 'http://placehold.it/468x458',
+      alt: 'Option 1',
+      answer: [
+        {
+          text: 'Фото',
+          value: 'photo',
+          name: 'question1',
+          class: 'game__answer--photo'
+        },
+        {
+          text: 'Рисунок',
+          value: 'paint',
+          name: 'question1',
+          class: 'game__answer--paint  game__answer--wide'
+        }
+      ]
+    }
+  ]
+};
+
+export const gameThree = {
+  task: 'Найдите рисунок среди изображений',
+  answer: [
+    {
+      image: 'http://placehold.it/468x458',
+      alt: 'Option 1',
+      class: ''
+    },
+    {
+      image: 'http://placehold.it/468x458',
+      alt: 'Option 1',
+      class: 'game__option--selected'
+    },
+    {
+      image: 'http://placehold.it/468x458',
+      alt: 'Option 1',
+      class: ''
+    }
+  ]
 };
