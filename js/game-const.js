@@ -1,10 +1,10 @@
-export const gameStats = {
-  wrong: 'wrong',
-  slow: 'slow',
-  fast: 'fast',
-  correct: 'correct',
-  unknown: 'unknown'
-};
+// export const gameStats = {
+//   wrong: 'wrong',
+//   slow: 'slow',
+//   fast: 'fast',
+//   correct: 'correct',
+//   unknown: 'unknown'
+// };
 
 export const indicators = {
   timer: 0,
@@ -13,7 +13,7 @@ export const indicators = {
 
 export const gameOne = {
   task: 'Угадайте для каждого изображения фото или рисунок?',
-  question: [
+  questions: [
     {
       image: 'http://placehold.it/468x458',
       alt: 'Option 1',
@@ -50,12 +50,13 @@ export const gameOne = {
         }
       ]
     }
-  ]
+  ],
+  stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
 };
 
 export const gameTwo = {
   task: 'Угадай, фото или рисунок?',
-  question: [
+  questions: [
     {
       image: 'http://placehold.it/468x458',
       alt: 'Option 1',
@@ -74,12 +75,13 @@ export const gameTwo = {
         }
       ]
     }
-  ]
+  ],
+  stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
 };
 
 export const gameThree = {
   task: 'Найдите рисунок среди изображений',
-  answer: [
+  answers: [
     {
       image: 'http://placehold.it/468x458',
       alt: 'Option 1',
@@ -94,6 +96,67 @@ export const gameThree = {
       image: 'http://placehold.it/468x458',
       alt: 'Option 1',
       class: ''
+    }
+  ],
+  stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+};
+
+export const gameStats = {
+  title: 'Победа!',
+  results: [
+    {
+      number: '1.',
+      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown'],
+      multiplier: '×&nbsp;100',
+      scores: 900,
+      total: 950,
+      extras: [
+        {
+          title: 'Бонус за скорость:',
+          type: 'fast',
+          amount: '1&nbsp;',
+          multiplier: '×&nbsp;50',
+          scores: 50
+        },
+        {
+          title: 'Бонус за жизни:',
+          type: 'heart',
+          amount: '2&nbsp;',
+          multiplier: '×&nbsp;50',
+          scores: 100
+        },
+        {
+          title: 'Штраф за медлительность:',
+          type: 'slow',
+          amount: '2&nbsp;',
+          multiplier: '×&nbsp;50',
+          scores: -100
+        }
+      ]
+    },
+    {
+      number: '2.',
+      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'wrong', 'fast', 'wrong'],
+      multiplier: '',
+      scores: '',
+      total: 'fail',
+      extras: []
+    },
+    {
+      number: '3.',
+      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown'],
+      multiplier: '×&nbsp;100',
+      scores: 900,
+      total: 950,
+      extras: [
+        {
+          title: 'Бонус за жизни:',
+          type: 'heart',
+          amount: '2&nbsp;',
+          multiplier: '×&nbsp;50',
+          scores: 100
+        }
+      ]
     }
   ]
 };

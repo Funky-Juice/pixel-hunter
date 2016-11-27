@@ -1,17 +1,17 @@
 import createElementDOM from '../create-dom-element';
 import slidesDisplay from '../display-slides';
 import headerTemplate from './header';
-import {gameOne, gameStats, indicators} from '../game-const';
+import {gameOne, indicators} from '../game-const';
 
 const content = (data) =>`\
 <p class="game__task">${data.task}</p>
 <form class="game__content">
 
-  ${data.question.map((question) =>`
+  ${data.questions.map((question) =>`\
   <div class="game__option">
     <img src="${question.image}" alt="${question.alt}" width="468" height="458">
     
-    ${question.answer.map((answer) =>`
+    ${question.answer.map((answer) =>`\
     <label class="game__answer  ${answer.class}">
       <input name="${answer.name}" type="radio" value="${answer.value}">
       <span>${answer.text}</span>
@@ -20,19 +20,11 @@ const content = (data) =>`\
   </div>`).join('')}
 </form>`;
 
-const stats = `\
+const stats = (data) =>`\
 <div class="stats">
   <ul class="stats">
-    <li class="stats__result stats__result--${gameStats.wrong}"></li>    
-    <li class="stats__result stats__result--${gameStats.slow}"></li>    
-    <li class="stats__result stats__result--${gameStats.fast}"></li>    
-    <li class="stats__result stats__result--${gameStats.correct}"></li>    
-    <li class="stats__result stats__result--${gameStats.unknown}"></li>    
-    <li class="stats__result stats__result--${gameStats.unknown}"></li>    
-    <li class="stats__result stats__result--${gameStats.unknown}"></li>    
-    <li class="stats__result stats__result--${gameStats.unknown}"></li>    
-    <li class="stats__result stats__result--${gameStats.unknown}"></li>    
-    <li class="stats__result stats__result--${gameStats.unknown}"></li>
+    ${data.stats.map((result) =>`\
+    <li class="stats__result stats__result--${result}"></li>`).join('')}
   </ul>
 </div>`;
 
@@ -40,9 +32,8 @@ const gameOneTemplate = `\
 ${headerTemplate(indicators)}
 <div class="game">
   ${content(gameOne)}
-  ${stats}
+  ${stats(gameOne)}
 </div>`;
-
 
 const gameOneElement = createElementDOM(gameOneTemplate);
 
