@@ -1,7 +1,7 @@
 import createElementDOM from '../create-dom-element';
 import slidesDisplay from '../display-slides';
 import headerTemplate from './header';
-import {gameOne, indicators} from '../game-const';
+import {gameOne, indicators} from '../game-data';
 
 const content = (data) =>`\
 <p class="game__task">${data.task}</p>

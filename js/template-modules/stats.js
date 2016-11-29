@@ -1,5 +1,5 @@
 import createElementDOM from '../create-dom-element';
-import {gameStats} from '../game-const';
+import {gameStats} from '../game-data';
 
 const header = `\
 <header class="header">
@@ -37,9 +37,6 @@ const gameResults = (data) =>`\
       <td class="result__total">${extras.scores}</td>
     </tr>`).join('')}    
     
-    <!--во второй таблице 'поехала' верстка из-за не соотвествия разметки.-->
-    <!--итоговое значение должно быть в первой строке, а не в отдельной.-->
-    <!--также не должно быть ячеек result__points и result__total.-->
     <tr>
       <td colspan="5" class="result__total  result__total--final">${results.total}</td>
     </tr>
