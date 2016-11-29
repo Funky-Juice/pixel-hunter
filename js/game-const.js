@@ -1,11 +1,3 @@
-// export const gameStats = {
-//   wrong: 'wrong',
-//   slow: 'slow',
-//   fast: 'fast',
-//   correct: 'correct',
-//   unknown: 'unknown'
-// };
-
 export const indicators = {
   timer: 0,
   lives: ['empty', 'full', 'full']
