@@ -1,5 +1,5 @@
 import createElementDOM from '../create-dom-element';
-import nextScreen from '../game-levels/level-1';
+import gameScreenOne from './game-screen-1';
 import renderPage from '../render-page';
 
 const header = `\
@@ -44,7 +44,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 
 rulesSubmit.onclick = (evt) => {
   evt.preventDefault();
-  renderPage(nextScreen);
+  renderPage(gameScreenOne);
 };
 
 export default rulesElement;

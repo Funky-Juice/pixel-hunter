@@ -1,3 +1,7 @@
+import livesScale from '../lives.js';
+
+const timer = 'NN';
+
 const headerTemplate = (data) =>`\
   <header class="header">
     <div class="header__back">
@@ -6,11 +10,8 @@ const headerTemplate = (data) =>`\
         <img src="img/logo_small.png" width="101" height="44">
       </span>
     </div>
-    <h1 class="game__timer">${data.timer}</h1>
-    <div class="game__lives">
-      ${data.lives.map((lives) =>`\
-      <img src="img/heart__${lives}.svg" class="game__heart" alt="Life" width="32" height="32">`).join('')}
-    </div>
+    <h1 class="game__timer">${timer}</h1>
+    ${livesScale}
   </header>`;
 
 export default headerTemplate;

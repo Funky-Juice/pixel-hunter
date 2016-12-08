@@ -1,4 +1,9 @@
-export const content = (data) =>`\
+import createElementDOM from '../create-dom-element';
+import questionHandler from '../game-engine';
+import headerTemplate from './header';
+import renderPage from '../render-page';
+
+const content = (data) =>`\
   <p class="game__task">${data.task}</p>
   <form class="game__content  game__content--wide">
   
@@ -15,10 +20,33 @@ export const content = (data) =>`\
     </div>`).join('')}  
   </form>`;
 
-export const stats = (data) =>`\
+const stats = (data) =>`\
   <div class="stats">
     <ul class="stats">
       ${data.stats.map((result) =>`\
       <li class="stats__result stats__result--${result}"></li>`).join('')}    
     </ul>
   </div>`;
+
+export default (data) => {
+  const gameTemplate = `\
+  ${headerTemplate}
+  <div class="game">
+    ${content(data)}
+    ${stats(data)}
+  </div>`;
+
+  const gameElement = createElementDOM(gameTemplate);
+
+  const gameAnswer = gameElement.querySelectorAll('.game__answer');
+
+  for (let i = 0; i < gameAnswer.length; i++) {
+    gameAnswer[i].onclick = (evt) => {
+      evt.preventDefault();
+      questionHandler();
+    };
+  }
+
+  renderPage(gameElement);
+  return gameElement;
+};

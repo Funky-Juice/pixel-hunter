@@ -1,32 +1,32 @@
-import createElementDOM from './create-dom-element';
-import headerTemplate from './template-modules/header';
-import renderPage from './render-page';
+import {gameLevels, gameStats} from './game-data';
+import gameScreenOne from './template-modules/game-screen-1';
+import gameScreenTwo from './template-modules/game-screen-2';
+import gameScreenThree from './template-modules/game-screen-3';
+import stats from './template-modules/stats';
 
-export default (data, indicators, content, stats, nextScreen) => {
-  const gameScreen = `\
-    ${headerTemplate(indicators)}
-    <div class="game">
-      ${content(data)}
-      ${stats(data)}
-    </div>`;
+let ques = gameLevels.values();
 
-  const gameElement = createElementDOM(gameScreen);
-
-  let targetClass = '';
-
-  if (gameElement.querySelector('.game__answer')) {
-    targetClass = 'game__answer';
-  } else {
-    targetClass = 'game__option';
-  }
-
-  gameElement.onclick = (evt) => {
-    let target = evt.target;
-    if (target.classList.contains(targetClass)) {
-      evt.preventDefault();
-      renderPage(nextScreen);
+const questionHandler = () => {
+  let currentQues = ques.next().value;
+  return () => {
+    if (!currentQues) {
+      stats(gameStats);
+      return;
+    }
+    switch (currentQues.type) {
+      case 'gameScreenOne':
+        gameScreenOne(currentQues);
+        break;
+      case 'gameScreenTwo':
+        gameScreenTwo(currentQues);
+        break;
+      case 'gameScreenThree':
+        gameScreenThree(currentQues);
+        break;
+      default:
+        return;
     }
   };
-
-  return gameElement;
 };
+
+export default questionHandler;
