@@ -1,8 +1,4 @@
-import slidesDisplay from './display-slides';
+import introElement from './template-modules/intro.js';
+import renderPage from './render-page.js';
 
-slidesDisplay(0);
-
-document.querySelector('.intro__asterisk').onclick = (evt) => {
-  evt.preventDefault();
-  slidesDisplay(1);
-};
+renderPage(introElement);
