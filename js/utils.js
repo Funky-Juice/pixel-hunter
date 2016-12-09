@@ -4,9 +4,21 @@ import gameScreenTwo from './template-modules/game-screen-2';
 import gameScreenThree from './template-modules/game-screen-3';
 import stats from './template-modules/stats';
 
-let ques = gameLevels.values();
+
+const createElementDOM = (templateContent) => {
+  let container = document.createElement('div');
+  container.innerHTML = templateContent;
+  return container;
+};
+
+let renderPage = (element) => {
+  let mainElement = document.getElementById('main');
+  mainElement.innerHTML = '';
+  return mainElement.appendChild(element);
+};
 
 const questionHandler = () => {
+  let ques = gameLevels.values();
   let currentQues = ques.next().value;
   return () => {
     if (!currentQues) {
@@ -29,4 +41,4 @@ const questionHandler = () => {
   };
 };
 
-export default questionHandler;
+export {createElementDOM, renderPage, questionHandler};

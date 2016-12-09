@@ -1,6 +1,5 @@
-import createElementDOM from '../create-dom-element';
+import {createElementDOM, renderPage} from '../utils';
 import greeting from './greeting';
-import renderPage from '../render-page';
 
 const introTemplate = `\
   <div id="intro" class="intro">

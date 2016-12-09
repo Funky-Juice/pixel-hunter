@@ -1,5 +1,4 @@
-import createElementDOM from '../create-dom-element';
-import {gameStats} from '../game-data';
+import {createElementDOM, renderPage} from '../utils';
 
 const header = `\
   <header class="header">
@@ -42,12 +41,15 @@ const gameResults = (data) =>`\
     </tr>
   </table>`).join('')}`;
 
-const statsTemplate = `\
-  ${header}
-  <div class="result">
-    ${gameResults(gameStats)}
-  </div>`;
+export default (data) => {
+  const statsTemplate = `\
+    ${header}
+    <div class="result">
+      ${gameResults(data)}
+    </div>`;
 
-const statsElement = createElementDOM(statsTemplate);
+  const statsElement = createElementDOM(statsTemplate);
 
-export default statsElement;
+  renderPage(statsElement);
+  return statsElement;
+};

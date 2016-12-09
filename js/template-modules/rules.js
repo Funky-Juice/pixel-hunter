@@ -1,6 +1,4 @@
-import createElementDOM from '../create-dom-element';
-import gameScreenOne from './game-screen-1';
-import renderPage from '../render-page';
+import {createElementDOM, questionHandler} from '../utils';
 
 const header = `\
   <header class="header">
@@ -32,7 +30,8 @@ const content = `\
 
 const rulesTemplate = `\
   ${header}
-  ${content}`;
+  ${content}
+`;
 
 const rulesElement = createElementDOM(rulesTemplate);
 
@@ -44,7 +43,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 
 rulesSubmit.onclick = (evt) => {
   evt.preventDefault();
-  renderPage(gameScreenOne);
+  questionHandler()();
 };
 
 export default rulesElement;

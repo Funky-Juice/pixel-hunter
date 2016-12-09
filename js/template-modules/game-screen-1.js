@@ -1,7 +1,5 @@
-import createElementDOM from '../create-dom-element';
-import questionHandler from '../game-engine';
+import {createElementDOM, renderPage, questionHandler} from '../utils';
 import headerTemplate from './header';
-import renderPage from '../render-page';
 
 const content = (data) =>`\
   <p class="game__task">${data.task}</p>
@@ -43,7 +41,7 @@ export default (data) => {
   for (let i = 0; i < gameAnswer.length; i++) {
     gameAnswer[i].onclick = (evt) => {
       evt.preventDefault();
-      questionHandler();
+      questionHandler()();
     };
   }
 

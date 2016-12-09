@@ -1,6 +1,5 @@
-import createElementDOM from '../create-dom-element';
+import {createElementDOM, renderPage} from '../utils';
 import rules from './rules';
-import renderPage from '../render-page';
 
 const greetingTemplate = `\
   <div class="greeting  central--blur">

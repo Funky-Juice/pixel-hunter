@@ -2,7 +2,7 @@ import livesScale from '../lives.js';
 
 const timer = 'NN';
 
-const headerTemplate = (data) =>`\
+const headerTemplate = `\
   <header class="header">
     <div class="header__back">
       <span class="back">
