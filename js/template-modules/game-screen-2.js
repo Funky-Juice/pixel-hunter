@@ -41,7 +41,7 @@ export default (data) => {
   for (let i = 0; i < gameAnswer.length; i++) {
     gameAnswer[i].onclick = (evt) => {
       evt.preventDefault();
-      questionHandler();
+      questionHandler()();
     };
   }
 

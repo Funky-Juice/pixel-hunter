@@ -17,8 +17,9 @@ let renderPage = (element) => {
   return mainElement.appendChild(element);
 };
 
+let ques = gameLevels.values();
+
 const questionHandler = () => {
-  let ques = gameLevels.values();
   let currentQues = ques.next().value;
   return () => {
     if (!currentQues) {

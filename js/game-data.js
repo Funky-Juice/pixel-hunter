@@ -271,26 +271,47 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenThree',
-      task: 'Найдите рисунок среди изображений',
-      answers: [
+      type: 'gameScreenOne',
+      task: 'Угадайте для каждого изображения фото или рисунок?',
+      questions: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
-          class: ''
+          answer: [
+            {
+              text: 'Фото',
+              value: 'photo',
+              name: 'question1',
+              class: 'game__answer--photo'
+            },
+            {
+              text: 'Рисунок',
+              value: 'paint',
+              name: 'question1',
+              class: 'game__answer--paint'
+            }
+          ]
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: 'game__option--selected'
-        },
-        {
-          image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 2',
+          answer: [
+            {
+              text: 'Фото',
+              value: 'photo',
+              name: 'question2',
+              class: 'game__answer--photo'
+            },
+            {
+              text: 'Рисунок',
+              value: 'paint',
+              name: 'question2',
+              class: 'game__answer--paint'
+            }
+          ]
         }
       ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
     }
   ]),
   gameStats: {
