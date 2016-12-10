@@ -1,15 +1,14 @@
-import createElementDOM from '../create-dom-element';
-import {gameStats} from '../game-data';
+import {createElementDOM, renderPage} from '../utils';
 
 const header = `\
-<header class="header">
-  <div class="header__back">
-    <span class="back">
-      <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-      <img src="img/logo_small.png" width="101" height="44">
-    </span>
-  </div>
-</header>`;
+  <header class="header">
+    <div class="header__back">
+      <span class="back">
+        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
+        <img src="img/logo_small.png" width="101" height="44">
+      </span>
+    </div>
+  </header>`;
 
 const gameResults = (data) =>`\
   <h1>${data.title}</h1>
@@ -40,15 +39,17 @@ const gameResults = (data) =>`\
     <tr>
       <td colspan="5" class="result__total  result__total--final">${results.total}</td>
     </tr>
-  </table>`).join('')}
-`;
+  </table>`).join('')}`;
 
-const statsTemplate = `\
-${header}
-<div class="result">
-  ${gameResults(gameStats)}
-</div>`;
+export default (data) => {
+  const statsTemplate = `\
+    ${header}
+    <div class="result">
+      ${gameResults(data)}
+    </div>`;
 
-const stats = createElementDOM(statsTemplate);
+  const statsElement = createElementDOM(statsTemplate);
 
-export default stats;
+  renderPage(statsElement);
+  return statsElement;
+};

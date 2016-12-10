@@ -1,9 +1,17 @@
-import createElementDOM from '../create-dom-element';
+import {createElementDOM, renderPage} from '../utils';
+import greeting from './greeting';
 
 const introTemplate = `\
-<div id="intro" class="intro">
-  <h1 class="intro__asterisk">*</h1>
-  <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
-</div>`;
+  <div id="intro" class="intro">
+    <h1 class="intro__asterisk">*</h1>
+    <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
+  </div>`;
 
-export default createElementDOM(introTemplate);
+const introElement = createElementDOM(introTemplate);
+
+introElement.querySelector('.intro__asterisk').onclick = (evt) => {
+  evt.preventDefault();
+  renderPage(greeting);
+};
+
+export default introElement;
