@@ -12,6 +12,8 @@ const minify = require('gulp-csso');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const webpack = require('gulp-webpack');
+const mocha = require('gulp-mocha');
+require('babel-register');
 
 gulp.task('style', function () {
   gulp.src('sass/style.scss')
@@ -54,6 +56,14 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('test', function () {
+  return gulp
+    .src(['js/**/*.test.js'], { read: false })
+    .pipe(mocha({
+      compilers: {
+        js: 'babel-register'
+      },
+      reporter: 'spec'
+    }));
 });
 
 gulp.task('imagemin', ['copy'], function () {
