@@ -1,7 +1,7 @@
 const gameData = {
   gameLevels: new Set([
     {
-      type: 'gameScreenOne',
+      type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
       questions: [
         {
@@ -44,7 +44,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
     },
     {
-      type: 'gameScreenTwo',
+      type: 'gameTypeTwo',
       task: 'Угадай, фото или рисунок?',
       questions: [
         {
@@ -69,7 +69,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenThree',
+      type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
       answers: [
         {
@@ -91,7 +91,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenOne',
+      type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
       questions: [
         {
@@ -134,7 +134,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
     },
     {
-      type: 'gameScreenTwo',
+      type: 'gameTypeTwo',
       task: 'Угадай, фото или рисунок?',
       questions: [
         {
@@ -159,7 +159,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenThree',
+      type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
       answers: [
         {
@@ -181,7 +181,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenOne',
+      type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
       questions: [
         {
@@ -224,7 +224,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
     },
     {
-      type: 'gameScreenTwo',
+      type: 'gameTypeTwo',
       task: 'Угадай, фото или рисунок?',
       questions: [
         {
@@ -249,7 +249,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenThree',
+      type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
       answers: [
         {
@@ -271,7 +271,7 @@ const gameData = {
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
     },
     {
-      type: 'gameScreenOne',
+      type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
       questions: [
         {

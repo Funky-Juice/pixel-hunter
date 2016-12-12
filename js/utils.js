@@ -1,7 +1,7 @@
 import {gameLevels, gameStats} from './game-data';
-import gameScreenOne from './template-modules/game-screen-1';
-import gameScreenTwo from './template-modules/game-screen-2';
-import gameScreenThree from './template-modules/game-screen-3';
+import gameTypeOne from './template-modules/game-type-1';
+import gameTypeTwo from './template-modules/game-type-2';
+import gameTypeThree from './template-modules/game-type-3';
 import stats from './template-modules/stats';
 
 
@@ -27,14 +27,14 @@ const questionHandler = () => {
       return;
     }
     switch (currentQues.type) {
-      case 'gameScreenOne':
-        gameScreenOne(currentQues);
+      case 'gameTypeOne':
+        gameTypeOne(currentQues);
         break;
-      case 'gameScreenTwo':
-        gameScreenTwo(currentQues);
+      case 'gameTypeTwo':
+        gameTypeTwo(currentQues);
         break;
-      case 'gameScreenThree':
-        gameScreenThree(currentQues);
+      case 'gameTypeThree':
+        gameTypeThree(currentQues);
         break;
       default:
         return;
