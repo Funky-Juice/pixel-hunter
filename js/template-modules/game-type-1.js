@@ -34,16 +34,29 @@ export default (data) => {
     ${stats(data)}
   </div>`;
 
+
   const gameElement = createElementDOM(gameTemplate);
 
-  const gameAnswer = gameElement.querySelectorAll('.game__answer');
+  const gameContent = gameElement.querySelector('.game__content');
 
-  for (let i = 0; i < gameAnswer.length; i++) {
-    gameAnswer[i].onclick = (evt) => {
-      evt.preventDefault();
-      questionHandler()();
-    };
-  }
+  let answer1;
+  let answer2;
+
+  gameContent.onclick = (evt) => {
+    if (evt.target.checked) {
+
+      if (evt.target.name === 'question1') {
+        answer1 = evt.target.value;
+
+      } else if (evt.target.name === 'question2') {
+        answer2 = evt.target.value;
+      }
+
+      if (answer1 && answer2) {
+        questionHandler()();
+      }
+    }
+  };
 
   renderPage(gameElement);
   return gameElement;
