@@ -1,13 +1,13 @@
-import {createElementDOM, renderPage, questionHandler} from '../utils';
+import {createElementDOM, renderPage, questionHandler, changeLive} from '../utils';
 import headerTemplate from './header';
 
 const content = (data) =>`\
   <p class="game__task">${data.task}</p>
   <form class="game__content  game__content--triple">
   
-    ${data.answers.map((answers) =>`\
-    <div class="game__option ${answers.class}">
-      <img src="${answers.image}" alt="${answers.alt}" width="304" height="455">
+    ${data.answer.map((answer) =>`\
+    <div class="game__option">
+      <img src="${answer.image}" alt="${answer.alt}" width="304" height="455">
     </div>`).join('')}  
   </form>`;
 
@@ -29,14 +29,28 @@ export default (data) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
-  const gameAnswer = gameElement.querySelectorAll('.game__option');
+  const gameContent = gameElement.querySelector('.game__content');
 
-  for (let i = 0; i < gameAnswer.length; i++) {
-    gameAnswer[i].onclick = (evt) => {
-      evt.preventDefault();
-      questionHandler()();
-    };
-  }
+  let gameOptionArr = gameContent.querySelectorAll('.game__option');
+
+  gameContent.onclick = (evt) => {
+    if (evt.target.classList.contains('game__option')) {
+      (evt.target.classList.add('game__option--selected'))
+
+      for (let i = 0; i < gameOptionArr.length; i++) {
+        if (gameOptionArr[i].classList.contains('game__option--selected')) {
+          let answer = (i === data.correctAnswer);
+
+          if (answer) {
+            questionHandler()();
+          } else {
+            changeLive();
+            questionHandler()();
+          }
+        }
+      }
+    }
+  };
 
   renderPage(gameElement);
   return gameElement;

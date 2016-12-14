@@ -74,21 +74,19 @@ const gameData = {
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
-      answers: [
+      correctAnswer: 0,
+      answer: [
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 1'
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: 'game__option--selected'
+          alt: 'Option 1'
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 1'
         }
       ],
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
@@ -167,21 +165,19 @@ const gameData = {
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
-      answers: [
+      correctAnswer: 0,
+      answer: [
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 1'
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: 'game__option--selected'
+          alt: 'Option 1'
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 1'
         }
       ],
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
@@ -260,21 +256,19 @@ const gameData = {
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
-      answers: [
+      correctAnswer: 0,
+      answer: [
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 1'
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: 'game__option--selected'
+          alt: 'Option 1'
         },
         {
           image: 'http://placehold.it/468x458',
-          alt: 'Option 1',
-          class: ''
+          alt: 'Option 1'
         }
       ],
       stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
