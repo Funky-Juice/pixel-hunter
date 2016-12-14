@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, questionHandler, changeLive} from '../utils';
+import {createElementDOM, renderPage, getNextLevel, changeLive, startTimer, timerId} from '../utils';
 import headerTemplate from './header';
 
 const content = (data) =>`\
@@ -38,6 +38,10 @@ export default (data) => {
 
   const gameContent = gameElement.querySelector('.game__content');
 
+  const gameTimer = gameElement.querySelector('.game__timer');
+
+  startTimer(gameTimer);
+
   let answer;
 
   gameContent.onclick = (evt) => {
@@ -47,10 +51,12 @@ export default (data) => {
 
     if (answer) {
       if (data.questions[0].correctAnswer === answer) {
-        questionHandler()();
+        clearInterval(timerId);
+        getNextLevel()();
       } else {
+        clearInterval(timerId);
         changeLive();
-        questionHandler()();
+        getNextLevel()();
       }
     }
   };

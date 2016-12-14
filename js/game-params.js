@@ -17,3 +17,17 @@ export const setLives = (data, lives) => {
   }
   return copiedObject;
 };
+
+export const setTimer = (data, timer) => {
+  if (timer > initialData.timer) {
+    throw new RangeError(`timer > ${initialData.timer}`);
+  }
+  if (timer < 0) {
+    throw new RangeError('timer < 0');
+  }
+  const copiedObject = Object.assign({}, data, {timer: timer});
+  if (data === copiedObject) {
+    throw new Error('Returned object should not be equal to object in the parametrs of the function');
+  }
+  return copiedObject;
+};

@@ -1,4 +1,4 @@
-import {createElementDOM, questionHandler} from '../utils';
+import {createElementDOM, getNextLevel} from '../utils';
 
 const header = `\
   <header class="header">
@@ -43,7 +43,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 
 rulesSubmit.onclick = (evt) => {
   evt.preventDefault();
-  questionHandler()();
+  getNextLevel()();
 };
 
 export default rulesElement;

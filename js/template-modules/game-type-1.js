@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, questionHandler, changeLive} from '../utils';
+import {createElementDOM, renderPage, getNextLevel, changeLive, startTimer, timerId} from '../utils';
 import headerTemplate from './header';
 
 const content = (data) =>`\
@@ -37,7 +37,11 @@ export default (data) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
+  const gameTimer = gameElement.querySelector('.game__timer');
+
   const gameContent = gameElement.querySelector('.game__content');
+
+  startTimer(gameTimer);
 
   let answer1;
   let answer2;
@@ -56,10 +60,12 @@ export default (data) => {
 
         if ((data.questions[0].correctAnswer === answer1)
           && (data.questions[1].correctAnswer === answer2)) {
-          questionHandler()();
+          clearInterval(timerId);
+          getNextLevel()();
         } else {
+          clearInterval(timerId);
           changeLive();
-          questionHandler()();
+          getNextLevel()();
         }
       }
     }
