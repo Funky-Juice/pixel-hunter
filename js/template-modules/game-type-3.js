@@ -35,7 +35,7 @@ export default (data) => {
 
   gameContent.onclick = (evt) => {
     if (evt.target.classList.contains('game__option')) {
-      (evt.target.classList.add('game__option--selected'))
+      (evt.target.classList.add('game__option--selected'));
 
       for (let i = 0; i < gameOptionArr.length; i++) {
         if (gameOptionArr[i].classList.contains('game__option--selected')) {
