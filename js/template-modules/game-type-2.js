@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, questionHandler} from '../utils';
+import {createElementDOM, renderPage, questionHandler, changeLive} from '../utils';
 import headerTemplate from './header';
 
 const content = (data) =>`\
@@ -36,14 +36,24 @@ export default (data) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
-  const gameAnswer = gameElement.querySelectorAll('.game__answer');
+  const gameContent = gameElement.querySelector('.game__content');
 
-  for (let i = 0; i < gameAnswer.length; i++) {
-    gameAnswer[i].onclick = (evt) => {
-      evt.preventDefault();
-      questionHandler()();
-    };
-  }
+  let answer;
+
+  gameContent.onclick = (evt) => {
+    if (evt.target.checked) {
+      answer = evt.target.value;
+    }
+
+    if (answer) {
+      if (data.questions[0].correctAnswer === answer) {
+        questionHandler()();
+      } else {
+        changeLive();
+        questionHandler()();
+      }
+    }
+  };
 
   renderPage(gameElement);
   return gameElement;

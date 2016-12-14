@@ -1,3 +1,8 @@
+// import {userData} from './utils';
+
+// console.log(userData.lives);
+
+// let livesCount = userData.lives;
 let livesCount = 2;
 const maxLivesCount = 3;
 

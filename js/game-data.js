@@ -7,6 +7,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -25,6 +26,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -50,6 +52,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -97,6 +100,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -115,6 +119,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -140,6 +145,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -187,6 +193,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -205,6 +212,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -230,6 +238,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -277,6 +286,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',
@@ -295,6 +305,7 @@ const gameData = {
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
+          correctAnswer: 'photo',
           answer: [
             {
               text: 'Фото',

@@ -1,8 +1,11 @@
+import {initialData, setLives} from './game-params';
 import {gameLevels, gameStats} from './game-data';
 import gameTypeOne from './template-modules/game-type-1';
 import gameTypeTwo from './template-modules/game-type-2';
 import gameTypeThree from './template-modules/game-type-3';
 import stats from './template-modules/stats';
+
+export let userData = Object.assign({}, initialData);
 
 
 const createElementDOM = (templateContent) => {
@@ -15,6 +18,10 @@ let renderPage = (element) => {
   let mainElement = document.getElementById('main');
   mainElement.innerHTML = '';
   return mainElement.appendChild(element);
+};
+
+export const changeLive = () => {
+  userData = setLives(userData, userData.lives - 1);
 };
 
 let ques = gameLevels.values();

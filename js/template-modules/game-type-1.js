@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, questionHandler} from '../utils';
+import {createElementDOM, renderPage, questionHandler, changeLive} from '../utils';
 import headerTemplate from './header';
 
 const content = (data) =>`\
@@ -53,7 +53,14 @@ export default (data) => {
       }
 
       if (answer1 && answer2) {
-        questionHandler()();
+
+        if ((data.questions[0].correctAnswer === answer1)
+          && (data.questions[1].correctAnswer === answer2)) {
+          questionHandler()();
+        } else {
+          changeLive();
+          questionHandler()();
+        }
       }
     }
   };
