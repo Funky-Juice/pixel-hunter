@@ -26,9 +26,9 @@ const stats = (data) =>`\
     </ul>
   </div>`;
 
-export default (data) => {
+export default (data, callback) => {
   const gameTemplate = `\
-  ${headerTemplate}
+  ${headerTemplate(callback)}
   <div class="game">
     ${content(data)}
     ${stats(data)}

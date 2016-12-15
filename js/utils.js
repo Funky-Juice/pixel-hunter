@@ -5,16 +5,15 @@ import gameTypeTwo from './template-modules/game-type-2';
 import gameTypeThree from './template-modules/game-type-3';
 import stats from './template-modules/stats';
 
-// export let userData = Object.assign({}, initialData);
-export let userData = JSON.parse(JSON.stringify(initialData));
+let userData = JSON.parse(JSON.stringify(initialData));
 
-const createElementDOM = (templateContent) => {
+export const createElementDOM = (templateContent) => {
   let container = document.createElement('div');
   container.innerHTML = templateContent;
   return container;
 };
 
-let renderPage = (element) => {
+export let renderPage = (element) => {
   let mainElement = document.getElementById('main');
   mainElement.innerHTML = '';
   return mainElement.appendChild(element);
@@ -33,20 +32,19 @@ export const startTimer = (element) => {
       changeLive();
       getNextLevel()();
     }
-  }, 1000 );
+  }, 1000);
 };
 
 export const changeLive = () => {
   if (userData.lives < 1) {
     stats(gameStats);
   }
-
   userData = setLives(userData, userData.lives - 1);
 };
 
 let gameDataValues = gameLevels.values();
 
-const getNextLevel = () => {
+export const getNextLevel = () => {
   let currentData = gameDataValues.next().value;
   return () => {
     if (!currentData) {
@@ -55,13 +53,13 @@ const getNextLevel = () => {
     }
     switch (currentData.type) {
       case 'gameTypeOne':
-        gameTypeOne(currentData);
+        gameTypeOne(currentData, livesCount);
         break;
       case 'gameTypeTwo':
-        gameTypeTwo(currentData);
+        gameTypeTwo(currentData, livesCount);
         break;
       case 'gameTypeThree':
-        gameTypeThree(currentData);
+        gameTypeThree(currentData, livesCount);
         break;
       default:
         return;
@@ -69,4 +67,18 @@ const getNextLevel = () => {
   };
 };
 
-export {createElementDOM, renderPage, getNextLevel};
+export const livesCount = () => {
+  const emptyHeartIcon = 'heart__empty.svg';
+  const fullHeartIcon = 'heart__full.svg';
+  const maxLivesValue = 3;
+
+  let currentLivesValue = userData.lives;
+
+  let hearts = '';
+
+  for (let i = maxLivesValue; i > 0; i--) {
+    hearts += `<img src="img/${ currentLivesValue < i ? emptyHeartIcon : fullHeartIcon}" class="game__heart" alt="Life" width="32" height="32">`;
+  }
+
+  return hearts;
+};

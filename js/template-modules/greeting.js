@@ -18,8 +18,7 @@ const greetingTemplate = `\
 
 const greetingElement = createElementDOM(greetingTemplate);
 
-greetingElement.querySelector('.greeting__continue').onclick = (evt) => {
-  evt.preventDefault();
+greetingElement.querySelector('.greeting__continue').onclick = () => {
   renderPage(rules);
 };
 
