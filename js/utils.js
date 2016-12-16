@@ -1,4 +1,4 @@
-import {initialData, setLives, setTimer} from './game-params';
+import {initialData, setLives, setTimer, setStats} from './game-params';
 import {gameLevels, gameStats} from './game-data';
 import gameTypeOne from './template-modules/game-type-1';
 import gameTypeTwo from './template-modules/game-type-2';
@@ -36,13 +36,26 @@ export const startTimer = (element) => {
 };
 
 export const changeLive = () => {
+  userData = setStats(userData, 'wrong', gameScreen - 1);
+
   if (userData.lives < 1) {
     stats(gameStats);
   }
   userData = setLives(userData, userData.lives - 1);
 };
 
+export const getStats = () => {
+  if (userData.timer > 20) {
+    userData = setStats(userData, 'fast', gameScreen - 1);
+  } else if (userData.timer < 10) {
+    userData = setStats(userData, 'slow', gameScreen - 1);
+  } else {
+    userData = setStats(userData, 'correct', gameScreen - 1);
+  }
+};
+
 let gameDataValues = gameLevels.values();
+let gameScreen = 0;
 
 export const getNextLevel = () => {
   let currentData = gameDataValues.next().value;
@@ -54,12 +67,15 @@ export const getNextLevel = () => {
     switch (currentData.type) {
       case 'gameTypeOne':
         gameTypeOne(currentData, livesCount);
+        gameScreen++;
         break;
       case 'gameTypeTwo':
         gameTypeTwo(currentData, livesCount);
+        gameScreen++;
         break;
       case 'gameTypeThree':
         gameTypeThree(currentData, livesCount);
+        gameScreen++;
         break;
       default:
         return;

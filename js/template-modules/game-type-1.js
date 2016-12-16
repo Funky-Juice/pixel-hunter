@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, getNextLevel, changeLive, startTimer, timerId} from '../utils';
+import {createElementDOM, renderPage, getNextLevel, changeLive, getStats, startTimer, timerId} from '../utils';
 import headerTemplate from './header';
 
 const content = (data) =>`\
@@ -61,6 +61,7 @@ export default (data, callback) => {
         if ((data.questions[0].correctAnswer === answer1)
           && (data.questions[1].correctAnswer === answer2)) {
           clearInterval(timerId);
+          getStats();
           getNextLevel()();
         } else {
           clearInterval(timerId);

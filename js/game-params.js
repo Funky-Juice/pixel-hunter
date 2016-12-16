@@ -31,3 +31,23 @@ export const setTimer = (data, timer) => {
   }
   return copiedObject;
 };
+
+export const setStats = (data, stats, num) => {
+  const arrStats = ['slow', 'fast', 'correct', 'wrong', 'unknown'];
+  if (arrStats.includes(stats) === false) {
+    throw new Error(`Value should be: ${arrStats}`);
+  }
+  const copiedArr = data.stats.slice();
+  copiedArr[num] = stats;
+
+  const copiedObject = JSON.parse(JSON.stringify(data));
+  copiedObject.stats = copiedArr;
+
+  if (data.stats === copiedObject.stats) {
+    throw new Error('Array of the object should be a copied');
+  }
+  if (data === copiedObject) {
+    throw new Error('Returned object should not be equal to object in the parametrs of the function');
+  }
+  return copiedObject;
+};
