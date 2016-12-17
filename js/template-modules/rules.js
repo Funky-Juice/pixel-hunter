@@ -1,4 +1,5 @@
-import {createElementDOM, getNextLevel} from '../utils';
+import {createElementDOM, renderPage, getNextLevel} from '../utils';
+import introElement from './intro.js';
 
 const header = `\
   <header class="header">
@@ -35,7 +36,13 @@ const rulesTemplate = `\
 
 const rulesElement = createElementDOM(rulesTemplate);
 
+const headerBack = rulesElement.querySelector('.header__back');
+
 const rulesSubmit = rulesElement.querySelector('.rules__button');
+
+headerBack.onclick = () => {
+  renderPage(introElement);
+};
 
 rulesElement.querySelector('.rules__input').oninput = (evt) => {
   rulesSubmit.disabled = (!evt.target.value);

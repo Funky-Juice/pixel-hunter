@@ -1,4 +1,5 @@
-import {createElementDOM, renderPage} from '../utils';
+import {createElementDOM, renderPage, resetUserData, resetGameDataValues, timerId} from '../utils';
+import introElement from './intro.js';
 
 const header = `\
   <header class="header">
@@ -97,7 +98,7 @@ const getGameResults = (data) => {
     return resultsScores;
   };
 
-const gameResults = `\
+  const gameResults = `\
   <h1>${resultsTitle()}</h1>
   
   <table class="result__table">
@@ -144,7 +145,7 @@ const gameResults = `\
 `;
 
   return gameResults;
-}
+};
 
 export default (data) => {
   const statsTemplate = `\
@@ -154,6 +155,15 @@ export default (data) => {
     </div>`;
 
   const statsElement = createElementDOM(statsTemplate);
+
+  const headerBack = statsElement.querySelector('.header__back');
+
+  headerBack.onclick = () => {
+    clearInterval(timerId);
+    resetUserData();
+    resetGameDataValues();
+    renderPage(introElement);
+  };
 
   renderPage(statsElement);
   return statsElement;

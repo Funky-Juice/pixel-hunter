@@ -7,6 +7,10 @@ import stats from './template-modules/stats';
 
 let userData = JSON.parse(JSON.stringify(initialData));
 
+export const resetUserData = () => {
+  userData = JSON.parse(JSON.stringify(initialData));
+};
+
 export const createElementDOM = (templateContent) => {
   let container = document.createElement('div');
   container.innerHTML = templateContent;
@@ -55,6 +59,11 @@ export const getStats = () => {
 };
 
 let gameDataValues = gameLevels.values();
+
+export const resetGameDataValues = () => {
+  gameDataValues = gameLevels.values();
+};
+
 let gameScreen = 0;
 
 export const getNextLevel = () => {

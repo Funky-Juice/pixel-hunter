@@ -1,5 +1,6 @@
-import {createElementDOM, renderPage, getNextLevel, changeLive, getStats, startTimer, timerId} from '../utils';
+import {createElementDOM, renderPage, getNextLevel, changeLive, getStats, startTimer, resetUserData, resetGameDataValues, timerId} from '../utils';
 import headerTemplate from './header';
+import introElement from './intro.js';
 
 const content = (data) =>`\
   <p class="game__task">${data.task}</p>
@@ -29,6 +30,8 @@ export default (data, statsdata, callback) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
+  const headerBack = gameElement.querySelector('.header__back');
+
   const gameContent = gameElement.querySelector('.game__content');
 
   let gameOptionArr = gameContent.querySelectorAll('.game__option');
@@ -36,6 +39,13 @@ export default (data, statsdata, callback) => {
   const gameTimer = gameElement.querySelector('.game__timer');
 
   startTimer(gameTimer);
+
+  headerBack.onclick = () => {
+    clearInterval(timerId);
+    resetUserData();
+    resetGameDataValues();
+    renderPage(introElement);
+  };
 
   gameContent.onclick = (evt) => {
     if (evt.target.classList.contains('game__option')) {
