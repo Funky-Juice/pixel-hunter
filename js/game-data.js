@@ -3,12 +3,12 @@ const gameData = {
     {
       type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -27,7 +27,7 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -42,18 +42,17 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
+      ]
     },
     {
       type: 'gameTypeTwo',
       task: 'Угадай, фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -68,14 +67,13 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      ]
     },
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
       correctAnswer: 0,
-      answer: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1'
@@ -88,18 +86,17 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1'
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      ]
     },
     {
       type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -118,7 +115,7 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -133,18 +130,17 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
+      ]
     },
     {
       type: 'gameTypeTwo',
       task: 'Угадай, фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -159,14 +155,13 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      ]
     },
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
       correctAnswer: 0,
-      answer: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1'
@@ -179,18 +174,17 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1'
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      ]
     },
     {
       type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -209,7 +203,7 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -224,18 +218,17 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
+      ]
     },
     {
       type: 'gameTypeTwo',
       task: 'Угадай, фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -250,14 +243,13 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      ]
     },
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
       correctAnswer: 0,
-      answer: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1'
@@ -270,18 +262,17 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1'
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown']
+      ]
     },
     {
       type: 'gameTypeOne',
       task: 'Угадайте для каждого изображения фото или рисунок?',
-      questions: [
+      gameOption: [
         {
           image: 'http://placehold.it/468x458',
           alt: 'Option 1',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -300,7 +291,7 @@ const gameData = {
           image: 'http://placehold.it/468x458',
           alt: 'Option 2',
           correctAnswer: 'photo',
-          answer: [
+          answerParams: [
             {
               text: 'Фото',
               value: 'photo',
@@ -315,72 +306,11 @@ const gameData = {
             }
           ]
         }
-      ],
-      stats: ['wrong', 'slow', 'fast', 'correct', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown', 'unknown']
+      ]
     }
-  ]),
-  gameStats: {
-    title: 'Победа!',
-    results: [
-      {
-        number: '1.',
-        stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown'],
-        multiplier: '×&nbsp;100',
-        scores: 900,
-        total: 950,
-        extras: [
-          {
-            title: 'Бонус за скорость:',
-            type: 'fast',
-            amount: '1&nbsp;',
-            multiplier: '×&nbsp;50',
-            scores: 50
-          },
-          {
-            title: 'Бонус за жизни:',
-            type: 'heart',
-            amount: '2&nbsp;',
-            multiplier: '×&nbsp;50',
-            scores: 100
-          },
-          {
-            title: 'Штраф за медлительность:',
-            type: 'slow',
-            amount: '2&nbsp;',
-            multiplier: '×&nbsp;50',
-            scores: -100
-          }
-        ]
-      },
-      {
-        number: '2.',
-        stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'wrong', 'fast', 'wrong'],
-        multiplier: '',
-        scores: '',
-        total: 'fail',
-        extras: []
-      },
-      {
-        number: '3.',
-        stats: ['wrong', 'slow', 'fast', 'correct', 'wrong', 'unknown', 'slow', 'unknown', 'fast', 'unknown'],
-        multiplier: '×&nbsp;100',
-        scores: 900,
-        total: 950,
-        extras: [
-          {
-            title: 'Бонус за жизни:',
-            type: 'heart',
-            amount: '2&nbsp;',
-            multiplier: '×&nbsp;50',
-            scores: 100
-          }
-        ]
-      }
-    ]
-  }
+  ])
 };
 
 const gameLevels = gameData.gameLevels;
-const gameStats = gameData.gameStats;
 
-export {gameLevels, gameStats};
+export default gameLevels;

@@ -5,26 +5,26 @@ const content = (data) =>`\
   <p class="game__task">${data.task}</p>
   <form class="game__content  game__content--triple">
   
-    ${data.answer.map((answer) =>`\
+    ${data.gameOption.map((gameOption) =>`\
     <div class="game__option">
-      <img src="${answer.image}" alt="${answer.alt}" width="304" height="455">
+      <img src="${gameOption.image}" alt="${gameOption.alt}" width="304" height="455">
     </div>`).join('')}  
   </form>`;
 
-const stats = (data) =>`\
+const stats = (statsdata) =>`\
   <div class="stats">
     <ul class="stats">
-      ${data.stats.map((result) =>`\
+      ${statsdata.stats.map((result) =>`\
       <li class="stats__result stats__result--${result}"></li>`).join('')}
     </ul>
   </div>`;
 
-export default (data, callback) => {
+export default (data, statsdata, callback) => {
   const gameTemplate = `\
   ${headerTemplate(callback)}
   <div class="game">
     ${content(data)}
-    ${stats(data)}
+    ${stats(statsdata)}
   </div>`;
 
   const gameElement = createElementDOM(gameTemplate);

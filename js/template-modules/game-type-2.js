@@ -5,33 +5,33 @@ const content = (data) =>`\
   <p class="game__task">${data.task}</p>
   <form class="game__content  game__content--wide">
   
-    ${data.questions.map((question) =>`\
+    ${data.gameOption.map((gameOption) =>`\
     <div class="game__option">
-      <img src="${question.image}" alt="${question.alt}" width="705" height="455">    
+      <img src="${gameOption.image}" alt="${gameOption.alt}" width="705" height="455">    
       
-      ${question.answer.map((answer) =>`\
-      <label class="game__answer  ${answer.class}">
-        <input name="${answer.name}" type="radio" value="${answer.value}">
-        <span>${answer.text}</span>
+      ${gameOption.answerParams.map((param) =>`\
+      <label class="game__answer  ${param.class}">
+        <input name="${param.name}" type="radio" value="${param.value}">
+        <span>${param.text}</span>
       </label>`).join('')} 
          
     </div>`).join('')}  
   </form>`;
 
-const stats = (data) =>`\
+const stats = (statsdata) =>`\
   <div class="stats">
     <ul class="stats">
-      ${data.stats.map((result) =>`\
+      ${statsdata.stats.map((result) =>`\
       <li class="stats__result stats__result--${result}"></li>`).join('')}    
     </ul>
   </div>`;
 
-export default (data, callback) => {
+export default (data, statsdata, callback) => {
   const gameTemplate = `\
   ${headerTemplate(callback)}
   <div class="game">
     ${content(data)}
-    ${stats(data)}
+    ${stats(statsdata)}
   </div>`;
 
   const gameElement = createElementDOM(gameTemplate);
@@ -50,7 +50,7 @@ export default (data, callback) => {
     }
 
     if (answer) {
-      if (data.questions[0].correctAnswer === answer) {
+      if (data.gameOption[0].correctAnswer === answer) {
         clearInterval(timerId);
         getStats();
         getNextLevel()();
