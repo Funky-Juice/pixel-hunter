@@ -9,8 +9,7 @@ const introTemplate = `\
 
 const introElement = createElementDOM(introTemplate);
 
-introElement.querySelector('.intro__asterisk').onclick = (evt) => {
-  evt.preventDefault();
+introElement.querySelector('.intro__asterisk').onclick = () => {
   renderPage(greeting);
 };
 
