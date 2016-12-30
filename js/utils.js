@@ -1,3 +1,4 @@
+// asd
 import {initialData, setLives, setTimer, setStats} from './game-params';
 import gameLevels from './game-data';
 import gameTypeOne from './template-modules/game-type-1';
