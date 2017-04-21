@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, getNextLevel, changeLive, getStats, startTimer, resetUserData, resetGameDataValues, timerId} from '../utils';
+import {createElementDOM, renderPage, getNextLevel, changeLive, getStats, startTimer, resetUserData, resetGameDataValues, resetGameScreen, timerId} from '../utils';
 import headerTemplate from './header';
 import introElement from './intro.js';
 
@@ -44,6 +44,7 @@ export default (data, statsdata, callback) => {
     clearInterval(timerId);
     resetUserData();
     resetGameDataValues();
+    resetGameScreen();
     renderPage(introElement);
   };
 

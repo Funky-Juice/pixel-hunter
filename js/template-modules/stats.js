@@ -1,4 +1,4 @@
-import {createElementDOM, renderPage, resetUserData, resetGameDataValues, timerId} from '../utils';
+import {createElementDOM, renderPage, resetUserData, resetGameDataValues, resetGameScreen, timerId} from '../utils';
 import introElement from './intro.js';
 
 const header = `\
@@ -162,6 +162,7 @@ export default (data) => {
     clearInterval(timerId);
     resetUserData();
     resetGameDataValues();
+    resetGameScreen();
     renderPage(introElement);
   };
 

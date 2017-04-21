@@ -66,6 +66,10 @@ export const resetGameDataValues = () => {
 
 let gameScreen = 0;
 
+export const resetGameScreen = () => {
+  gameScreen = 0;
+};
+
 export const getNextLevel = () => {
   let currentData = gameDataValues.next().value;
   return () => {
