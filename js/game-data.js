@@ -5,9 +5,9 @@ const gameData = {
       task: 'Угадайте для каждого изображения фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_1.jpg',
           alt: 'Option 1',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',
@@ -24,7 +24,7 @@ const gameData = {
           ]
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_1.jpg',
           alt: 'Option 2',
           correctAnswer: 'photo',
           answerParams: [
@@ -49,9 +49,9 @@ const gameData = {
       task: 'Угадай, фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_2.jpg',
           alt: 'Option 1',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',
@@ -72,18 +72,18 @@ const gameData = {
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
-      correctAnswer: 0,
+      correctAnswer: 2,
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_2.jpg',
           alt: 'Option 1'
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_3.jpg',
           alt: 'Option 1'
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_3.jpg',
           alt: 'Option 1'
         }
       ]
@@ -93,9 +93,9 @@ const gameData = {
       task: 'Угадайте для каждого изображения фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_4.jpg',
           alt: 'Option 1',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',
@@ -112,7 +112,7 @@ const gameData = {
           ]
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_4.jpg',
           alt: 'Option 2',
           correctAnswer: 'photo',
           answerParams: [
@@ -137,9 +137,9 @@ const gameData = {
       task: 'Угадай, фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_5.jpg',
           alt: 'Option 1',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',
@@ -163,15 +163,15 @@ const gameData = {
       correctAnswer: 0,
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_6.jpg',
           alt: 'Option 1'
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_5.jpg',
           alt: 'Option 1'
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_6.jpg',
           alt: 'Option 1'
         }
       ]
@@ -181,7 +181,7 @@ const gameData = {
       task: 'Угадайте для каждого изображения фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_7.jpg',
           alt: 'Option 1',
           correctAnswer: 'photo',
           answerParams: [
@@ -200,9 +200,9 @@ const gameData = {
           ]
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_7.jpg',
           alt: 'Option 2',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',
@@ -225,7 +225,7 @@ const gameData = {
       task: 'Угадай, фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_8.jpg',
           alt: 'Option 1',
           correctAnswer: 'photo',
           answerParams: [
@@ -248,18 +248,18 @@ const gameData = {
     {
       type: 'gameTypeThree',
       task: 'Найдите рисунок среди изображений',
-      correctAnswer: 0,
+      correctAnswer: 2,
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_9.jpg',
           alt: 'Option 1'
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/photo/photo_10.jpg',
           alt: 'Option 1'
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_8.jpg',
           alt: 'Option 1'
         }
       ]
@@ -269,9 +269,9 @@ const gameData = {
       task: 'Угадайте для каждого изображения фото или рисунок?',
       gameOption: [
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_9.jpg',
           alt: 'Option 1',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',
@@ -288,9 +288,9 @@ const gameData = {
           ]
         },
         {
-          image: 'http://placehold.it/468x458',
+          image: 'img/paint/paint_10.jpg',
           alt: 'Option 2',
-          correctAnswer: 'photo',
+          correctAnswer: 'paint',
           answerParams: [
             {
               text: 'Фото',

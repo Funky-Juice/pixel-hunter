@@ -85,7 +85,7 @@ gulp.task('copy-html', function () {
 gulp.task('copy', ['copy-html', 'scripts', 'style'], function () {
   gulp.src([
     'fonts/**/*.{woff,woff2}',
-    'img/*.*'
+    'img/**/*'
   ], {base: '.'})
     .pipe(gulp.dest('build'));
 });
