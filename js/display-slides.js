@@ -18,9 +18,9 @@ let slides = [
   stats
 ];
 
-let slidesDisplay = (index) => {
+let slideDisplay = (index) => {
   mainElement.innerHTML = '';
   mainElement.appendChild(slides[index]);
 };
 
-export default slidesDisplay;
+export default slideDisplay;

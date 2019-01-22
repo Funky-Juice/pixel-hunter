@@ -1,5 +1,5 @@
 import createElementDOM from '../create-dom-element';
-import slidesDisplay from '../display-slides';
+import slideDisplay from '../display-slides';
 
 const gameTwoTemplate = `\
   <header class="header">
@@ -54,7 +54,7 @@ const gameTwoAnswer = gameTwoElement.querySelectorAll('.game__answer');
 for (let i = 0; i < gameTwoAnswer.length; i++) {
   gameTwoAnswer[i].onclick = (evt) => {
     evt.preventDefault();
-    slidesDisplay(5);
+    slideDisplay(5);
   };
 }
 

@@ -1,5 +1,5 @@
 import createElementDOM from '../create-dom-element';
-import slidesDisplay from '../display-slides';
+import slideDisplay from '../display-slides';
 
 const rulesTemplate = `\
   <header class="header">
@@ -37,7 +37,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 
 rulesSubmit.onclick = (evt) => {
   evt.preventDefault();
-  slidesDisplay(3);
+  slideDisplay(3);
 };
 
 export default rulesElement;

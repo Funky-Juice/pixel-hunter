@@ -1,4 +1,5 @@
 import createElementDOM from '../create-dom-element';
+import slideDisplay from '../display-slides';
 
 const introTemplate = `\
   <div id="intro" class="intro">
@@ -7,5 +8,9 @@ const introTemplate = `\
   </div>`;
 
 const intro = createElementDOM(introTemplate);
+
+intro.querySelector('.intro__asterisk').onclick = () => {
+  slideDisplay(1);
+};
 
 export default intro;
