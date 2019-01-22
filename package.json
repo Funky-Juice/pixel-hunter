@@ -21,7 +21,7 @@
   "scripts": {
     "eslint": "eslint js/",
     "build": "gulp build",
-    "start": "gulp serve",
+    "start": "gulp clean && gulp serve",
     "test": "npm run eslint && gulp test"
   },
   "devDependencies": {
