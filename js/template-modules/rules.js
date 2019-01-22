@@ -1,7 +1,7 @@
 import createElementDOM from '../create-dom-element';
 import slideDisplay from '../display-slides';
 
-const rulesTemplate = `\
+const header = `\
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -9,7 +9,16 @@ const rulesTemplate = `\
         <img src="img/logo_small.png" width="101" height="44">
       </span>
     </div>
-  </header>
+  </header>`;
+
+const form = `\
+  <form class="rules__form">
+    <input class="rules__input" type="text" placeholder="Ваше Имя">
+    <button class="rules__button  continue" type="submit" disabled>Go!</button>
+  </form>`;
+
+const rulesTemplate = `\
+  ${header}
   <div class="rules  central--none">
     <h1 class="rules__title">Правила</h1>
     <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -21,10 +30,7 @@ const rulesTemplate = `\
       <br>
       Готовы?
     </p>
-    <form class="rules__form">
-      <input class="rules__input" type="text" placeholder="Ваше Имя">
-      <button class="rules__button  continue" type="submit" disabled>Go!</button>
-    </form>
+    ${form}
   </div>`;
 
 const rulesElement = createElementDOM(rulesTemplate);
