@@ -49,9 +49,8 @@ const gameThreeElement = createElementDOM(gameThreeTemplate);
 
 const gameThreeAnswer = gameThreeElement.querySelectorAll('.game__option');
 
-for (let i = 0; i < gameThreeAnswer.length; i++) {
-  gameThreeAnswer[i].onclick = (evt) => {
-    evt.preventDefault();
+for (const answer of gameThreeAnswer) {
+  answer.onclick = () => {
     slideDisplay(6);
   };
 }

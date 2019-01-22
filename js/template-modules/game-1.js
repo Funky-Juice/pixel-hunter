@@ -62,9 +62,8 @@ const gameOneElement = createElementDOM(gameOneTemplate);
 
 const gameOneAnswer = gameOneElement.querySelectorAll('.game__answer');
 
-for (let i = 0; i < gameOneAnswer.length; i++) {
-  gameOneAnswer[i].onclick = (evt) => {
-    evt.preventDefault();
+for (const answer of gameOneAnswer) {
+  answer.onclick = () => {
     slideDisplay(4);
   };
 }

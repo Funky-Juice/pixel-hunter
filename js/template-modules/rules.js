@@ -35,8 +35,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
   rulesSubmit.disabled = (!evt.target.value);
 };
 
-rulesSubmit.onclick = (evt) => {
-  evt.preventDefault();
+rulesSubmit.onclick = () => {
   slideDisplay(3);
 };
 

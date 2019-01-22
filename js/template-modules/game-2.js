@@ -51,9 +51,8 @@ const gameTwoElement = createElementDOM(gameTwoTemplate);
 
 const gameTwoAnswer = gameTwoElement.querySelectorAll('.game__answer');
 
-for (let i = 0; i < gameTwoAnswer.length; i++) {
-  gameTwoAnswer[i].onclick = (evt) => {
-    evt.preventDefault();
+for (const answer of gameTwoAnswer) {
+  answer.onclick = () => {
     slideDisplay(5);
   };
 }
