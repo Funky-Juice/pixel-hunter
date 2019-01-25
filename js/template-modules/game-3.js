@@ -1,5 +1,6 @@
 import createElementDOM from '../create-dom-element';
 import slideDisplay from '../display-slides';
+import {questions, gameStats, gameParams} from '../game-data';
 
 const header = `\
   <header class="header">
@@ -9,7 +10,7 @@ const header = `\
         <img src="img/logo_small.png" width="101" height="44">
       </span>
     </div>
-    <h1 class="game__timer">NN</h1>
+    <h1 class="game__timer">${gameParams.timer}</h1>
     <div class="game__lives">
       <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">
       <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
@@ -18,38 +19,27 @@ const header = `\
   </header>`;
 
 const form = `\
-  <form class="game__content  game__content--triple">
-    <div class="game__option">
-      <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-    </div>
-    <div class="game__option  game__option--selected">
-      <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-    </div>
-    <div class="game__option">
-      <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
-    </div>
+  <form class="game__content game__content--triple">
+    ${questions[2].content.map((img, i) => `\
+      <div class="game__option">
+        <img src="${img}" alt="Option ${i + 1}" width="304" height="455">
+      </div>
+    `).join('')}
   </form>`;
 
 const stats = `\
   <div class="stats">
     <ul class="stats">
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--correct"></li>
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--unknown"></li>
+    ${gameStats.map((val) => `\
+      <li class="stats__result stats__result--${val}"></li>
+    `).join('')}
     </ul>
   </div>`;
 
 const gameThreeTemplate = `\
   ${header}
   <div class="game">
-    <p class="game__task">Найдите рисунок среди изображений</p>
+    <p class="game__task">${questions[2].description}</p>
     ${form}
     ${stats}
   </div>`;
