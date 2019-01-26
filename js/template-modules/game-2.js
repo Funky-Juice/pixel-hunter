@@ -1,24 +1,9 @@
 import createElementDOM from '../create-dom-element';
 import slideDisplay from '../display-slides';
-import {gameStats, gameParams} from '../game-data';
+import header from './header';
+import gameStats from './gameStats';
 
 export default (data) => {
-
-  const header = `\
-    <header class="header">
-      <div class="header__back">
-        <span class="back">
-          <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-          <img src="img/logo_small.png" width="101" height="44">
-        </span>
-      </div>
-      <h1 class="game__timer">${gameParams.timer}</h1>
-      <div class="game__lives">
-        <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">
-        <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-        <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-      </div>
-    </header>`;
 
   const form = `\
     <form class="game__content game__content--wide">
@@ -37,21 +22,12 @@ export default (data) => {
       `).join('')}
     </form>`;
 
-  const stats = `\
-    <div class="stats">
-      <ul class="stats">
-      ${gameStats.map((val) => `\
-        <li class="stats__result stats__result--${val}"></li>
-      `).join('')}
-      </ul>
-    </div>`;
-
   const gameTemplate = `\
     ${header}
     <div class="game">
       <p class="game__task">${data.description}</p>
       ${form}
-      ${stats}
+      ${gameStats}
     </div>`;
 
   const gameElement = createElementDOM(gameTemplate);
