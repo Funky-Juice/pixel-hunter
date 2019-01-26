@@ -1,5 +1,6 @@
 import createElementDOM from '../create-dom-element';
-import slideDisplay from '../display-slides';
+import {renderScreen} from '../display-screens';
+import rules from './rules';
 
 const greetingTemplate = `\
   <div class="greeting  central--blur">
@@ -19,7 +20,7 @@ const greetingTemplate = `\
 const greeting = createElementDOM(greetingTemplate);
 
 greeting.querySelector('.greeting__continue').onclick = () => {
-  slideDisplay(2);
+  renderScreen(rules);
 };
 
 export default greeting;

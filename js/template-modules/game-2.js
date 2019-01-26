@@ -1,5 +1,5 @@
 import createElementDOM from '../create-dom-element';
-import slideDisplay from '../display-slides';
+import {getNextLevel} from '../display-screens';
 import header from './header';
 import gameStats from './gameStats';
 
@@ -35,8 +35,9 @@ export default (data) => {
   const gameAnswers = gameElement.querySelectorAll('.game__answer');
 
   for (const answer of gameAnswers) {
-    answer.onclick = () => {
-      slideDisplay(5);
+    answer.onclick = (evt) => {
+      evt.preventDefault();
+      getNextLevel();
     };
   }
 

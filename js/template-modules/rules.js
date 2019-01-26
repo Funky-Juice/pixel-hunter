@@ -1,5 +1,5 @@
 import createElementDOM from '../create-dom-element';
-import slideDisplay from '../display-slides';
+import {getNextLevel} from '../display-screens';
 
 const header = `\
   <header class="header">
@@ -42,7 +42,7 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 };
 
 rulesSubmit.onclick = () => {
-  slideDisplay(3);
+  getNextLevel();
 };
 
 export default rulesElement;

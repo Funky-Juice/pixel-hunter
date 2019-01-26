@@ -1,3 +1,4 @@
-import slideDisplay from './display-slides';
+import {renderScreen} from './display-screens';
+import intro from './template-modules/intro';
 
-slideDisplay(0);
+renderScreen(intro);

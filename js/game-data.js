@@ -1,18 +1,18 @@
 const questions = [
   {
-    question_type: 'single',
+    type: 'single',
     content: ['http://placehold.it/705x455'],
     answers: 'painting',
     description: 'Угадай, фото или рисунок?'
   },
   {
-    question_type: 'double',
+    type: 'double',
     content: ['http://placehold.it/468x458', 'http://placehold.it/468x458'],
     answers: ['painting', 'photo'],
     description: 'Угадайте для каждого изображения фото или рисунок?'
   },
   {
-    question_type: 'triple',
+    type: 'triple',
     content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
     answers: 2,
     description: 'Найдите рисунок среди изображений'
