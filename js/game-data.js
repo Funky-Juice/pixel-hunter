@@ -61,11 +61,11 @@ const questions = [
   }
 ];
 
-const gameParams = {
-  timer: 0,
+const INIT_STATE = Object.freeze({
+  timer: 30,
   lives: 3
-};
+});
 
 const gameStats = Array.from({length: questions.length}, () => 'unknown');
 
-export {questions, gameParams, gameStats};
+export {questions, INIT_STATE, gameStats};

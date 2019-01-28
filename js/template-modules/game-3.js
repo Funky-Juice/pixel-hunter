@@ -1,7 +1,9 @@
 import createElementDOM from '../create-dom-element';
 import {getNextLevel} from '../display-screens';
-import header from './header';
+import headerTemplate from './header';
 import gameStats from './gameStats';
+import {setTimer} from '../utils';
+import {INIT_STATE} from '../game-data';
 
 export default (data) => {
 
@@ -15,7 +17,7 @@ export default (data) => {
     </form>`;
 
   const gameTemplate = `\
-    ${header}
+    ${headerTemplate}
     <div class="game">
       <p class="game__task">${data.description}</p>
       ${form}
@@ -25,6 +27,9 @@ export default (data) => {
   const gameElement = createElementDOM(gameTemplate);
 
   const gameAnswers = gameElement.querySelectorAll('.game__option');
+  const timerElem = gameElement.querySelector('.game__timer');
+
+  setTimer(INIT_STATE, timerElem);
 
   for (const answer of gameAnswers) {
     answer.onclick = (evt) => {
