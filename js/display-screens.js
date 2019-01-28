@@ -11,10 +11,10 @@ const questionsData = questions.values();
 const getNextLevel = () => {
   let question = questionsData.next().value;
   if (!question) {
-    return renderScreen(stats)
+    return renderScreen(stats);
   }
 
-  switch(question.type) {
+  switch (question.type) {
     case 'single': renderScreen(gameTwoElement(question));
       break;
     case 'double': renderScreen(gameOneElement(question));
@@ -22,7 +22,8 @@ const getNextLevel = () => {
     case 'triple': renderScreen(gameThreeElement(question));
       break;
   }
-}
+  return true;
+};
 
 const renderScreen = (elem) => {
   mainElement.innerHTML = '';

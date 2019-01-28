@@ -42,4 +42,4 @@ export default (data) => {
   }
 
   return gameElement;
-}
+};
