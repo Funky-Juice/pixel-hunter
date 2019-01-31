@@ -1,9 +1,7 @@
-import {gameStats} from '../game-data';
-
-export default `\
+export default (scores) => `\
   <div class="stats">
     <ul class="stats">
-    ${gameStats.map((val) => `\
+    ${scores.map((val) => `\
       <li class="stats__result stats__result--${val}"></li>
     `).join('')}
     </ul>

@@ -1,11 +1,11 @@
 import createElementDOM from '../create-dom-element';
 import {getNextLevel} from '../display-screens';
 import headerTemplate from './header';
-import gameStats from './gameStats';
-import {setTimer} from '../utils';
-import {INIT_STATE} from '../game-data';
+import scoresTemplate from './scores';
+import {setTimer} from '../timer';
+import {setScores} from '../scoring';
 
-export default (data) => {
+export default (data, state, scores) => {
 
   const form = `\
     <form class="game__content game__content--wide">
@@ -29,7 +29,7 @@ export default (data) => {
     <div class="game">
       <p class="game__task">${data.description}</p>
       ${form}
-      ${gameStats}
+      ${scoresTemplate(scores)}
     </div>`;
 
   const gameElement = createElementDOM(gameTemplate);
@@ -37,12 +37,15 @@ export default (data) => {
   const gameAnswers = gameElement.querySelectorAll('.game__answer');
   const timerElem = gameElement.querySelector('.game__timer');
 
-  setTimer(INIT_STATE, timerElem);
+  const timerId = setTimer(state, timerElem);
 
   for (const answer of gameAnswers) {
     answer.onclick = (evt) => {
       evt.preventDefault();
+      setScores(timerElem.textContent, state);
+      clearInterval(timerId);
       getNextLevel();
+      state.level++;
     };
   }
 

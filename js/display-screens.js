@@ -2,7 +2,10 @@ import gameOneElement from './template-modules/game-1';
 import gameTwoElement from './template-modules/game-2';
 import gameThreeElement from './template-modules/game-3';
 import stats from './template-modules/stats';
-import {questions} from './game-data';
+import {questions, INIT_STATE, initScores} from './game-data';
+
+let gameState = Object.assign({}, INIT_STATE);
+let gameScores = initScores.slice(0);
 
 const mainElement = document.getElementById('main');
 
@@ -15,11 +18,11 @@ const getNextLevel = () => {
   }
 
   switch (question.type) {
-    case 'single': renderScreen(gameTwoElement(question));
+    case 'single': renderScreen(gameTwoElement(question, gameState, gameScores));
       break;
-    case 'double': renderScreen(gameOneElement(question));
+    case 'double': renderScreen(gameOneElement(question, gameState, gameScores));
       break;
-    case 'triple': renderScreen(gameThreeElement(question));
+    case 'triple': renderScreen(gameThreeElement(question, gameState, gameScores));
       break;
   }
   return true;
@@ -30,4 +33,4 @@ const renderScreen = (elem) => {
   mainElement.appendChild(elem);
 };
 
-export {renderScreen, getNextLevel};
+export {renderScreen, getNextLevel, gameScores};

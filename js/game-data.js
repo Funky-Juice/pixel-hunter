@@ -62,10 +62,11 @@ const questions = [
 ];
 
 const INIT_STATE = Object.freeze({
+  level: 0,
   timer: 30,
   lives: 3
 });
 
-const gameStats = Array.from({length: questions.length}, () => 'unknown');
+const initScores = Array.from({length: questions.length}, () => 'unknown');
 
-export {questions, INIT_STATE, gameStats};
+export {questions, INIT_STATE, initScores};
