@@ -4,6 +4,7 @@ import headerTemplate from './header';
 import scoresTemplate from './scores';
 import {setTimer} from '../timer';
 import {setScores} from '../scoring';
+import {changeLive} from '../utils';
 
 export default (data, state, scores) => {
 
@@ -25,7 +26,7 @@ export default (data, state, scores) => {
     </form>`;
 
   const gameTemplate = `\
-    ${headerTemplate}
+    ${headerTemplate(state)}
     <div class="game">
       <p class="game__task">${data.description}</p>
       ${form}
@@ -34,18 +35,24 @@ export default (data, state, scores) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
-  const gameAnswers = gameElement.querySelectorAll('.game__answer');
+  const gameAnswers = gameElement.querySelectorAll('.game__answer input');
   const timerElem = gameElement.querySelector('.game__timer');
 
   const timerId = setTimer(state, timerElem);
 
   for (const answer of gameAnswers) {
     answer.onclick = (evt) => {
-      evt.preventDefault();
-      setScores(timerElem.textContent, state);
-      clearInterval(timerId);
-      getNextLevel();
-      state.level++;
+      if (evt.target.value === data.answer) {
+        setScores(timerElem.textContent, state);
+        clearInterval(timerId);
+        getNextLevel();
+        state.level++;
+      } else {
+        changeLive();
+        clearInterval(timerId);
+        getNextLevel();
+        state.level++;
+      }
     };
   }
 

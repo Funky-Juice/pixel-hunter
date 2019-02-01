@@ -13,7 +13,7 @@ const questionsData = questions.values();
 
 const getNextLevel = () => {
   let question = questionsData.next().value;
-  if (!question) {
+  if (!question || gameState.lives < 0) {
     return renderScreen(stats);
   }
 
@@ -33,4 +33,4 @@ const renderScreen = (elem) => {
   mainElement.appendChild(elem);
 };
 
-export {renderScreen, getNextLevel, gameScores};
+export {renderScreen, getNextLevel, gameState, gameScores};

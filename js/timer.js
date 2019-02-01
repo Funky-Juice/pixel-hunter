@@ -1,4 +1,4 @@
-import {getNextLevel} from './display-screens';
+import {gameState, getNextLevel} from './display-screens';
 import {gameScores} from './display-screens';
 
 export const setTimer = (state, elem) => {
@@ -7,6 +7,7 @@ export const setTimer = (state, elem) => {
 
   const timerId = setInterval(() => {
     if (timer < 1) {
+      gameState.lives--;
       gameScores[state.level] = 'wrong';
       clearInterval(timerId);
       getNextLevel();

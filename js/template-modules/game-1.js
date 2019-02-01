@@ -4,6 +4,7 @@ import headerTemplate from './header';
 import scoresTemplate from './scores';
 import {setTimer} from '../timer';
 import {setScores} from '../scoring';
+import {changeLive} from '../utils';
 
 export default (data, state, scores) => {
 
@@ -11,13 +12,13 @@ export default (data, state, scores) => {
     <form class="game__content">
       ${data.content.map((img, i) => `\
         <div class="game__option">
-          <img src="${img}" alt="Option ${i + 1}" width="468" height="458">
+          <img src="${img}" alt="Option${i}" width="468" height="458">
           <label class="game__answer game__answer--photo">
-            <input name="question${i + 1}" type="radio" value="photo">
+            <input data-id="${i}" name="question${i + 1}" type="radio" value="photo">
             <span>Фото</span>
           </label>
           <label class="game__answer game__answer--paint">
-            <input name="question${i + 1}" type="radio" value="paint">
+            <input data-id="${i}" name="question${i + 1}" type="radio" value="paint">
             <span>Рисунок</span>
           </label>
         </div>
@@ -25,7 +26,7 @@ export default (data, state, scores) => {
     </form>`;
 
   const gameTemplate = `\
-    ${headerTemplate}
+    ${headerTemplate(state)}
     <div class="game">
       <p class="game__task">${data.description}</p>
       ${form}
@@ -34,18 +35,30 @@ export default (data, state, scores) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
-  const gameAnswers = gameElement.querySelectorAll('.game__answer');
+  const gameInputs = gameElement.querySelectorAll('.game__answer input');
   const timerElem = gameElement.querySelector('.game__timer');
 
   const timerId = setTimer(state, timerElem);
+  
+  const answers = new Array(data.content.length);
 
-  for (const answer of gameAnswers) {
-    answer.onclick = (evt) => {
-      evt.preventDefault();
-      setScores(timerElem.textContent, state);
-      clearInterval(timerId);
-      getNextLevel();
-      state.level++;
+  for (const input of gameInputs) {
+    input.onclick = () => {
+      answers[input.dataset.id] = input.value;
+
+      if (!answers.includes(undefined)) {
+        if (answers.every((it, i) => it === data.answer[i])) {
+          setScores(timerElem.textContent, state);
+          clearInterval(timerId);
+          getNextLevel();
+          state.level++;
+        } else {
+          changeLive();
+          clearInterval(timerId);
+          getNextLevel();
+          state.level++;
+        }
+      };
     };
   }
 
