@@ -4,12 +4,22 @@ import gameThreeElement from './template-modules/game-3';
 import stats from './template-modules/stats';
 import {questions, INIT_STATE, initScores} from './game-data';
 
+const mainElement = document.getElementById('main');
+
+let questionsData = questions.values();
 let gameState = Object.assign({}, INIT_STATE);
 let gameScores = initScores.slice(0);
 
-const mainElement = document.getElementById('main');
+const initGame = () => {
+  questionsData = questions.values();
+  gameState = Object.assign({}, INIT_STATE);
+  gameScores = initScores.slice(0);
+};
 
-const questionsData = questions.values();
+const renderScreen = (elem) => {
+  mainElement.innerHTML = '';
+  mainElement.appendChild(elem);
+};
 
 const getNextLevel = () => {
   let question = questionsData.next().value;
@@ -28,9 +38,4 @@ const getNextLevel = () => {
   return true;
 };
 
-const renderScreen = (elem) => {
-  mainElement.innerHTML = '';
-  mainElement.appendChild(elem);
-};
-
-export {renderScreen, getNextLevel, gameState, gameScores};
+export {initGame, renderScreen, getNextLevel, gameState, gameScores};

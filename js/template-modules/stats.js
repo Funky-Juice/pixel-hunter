@@ -1,4 +1,6 @@
 import createElementDOM from '../create-dom-element';
+import {initGame, renderScreen} from '../display-screens';
+import intro from './intro';
 
 const statsTemplate = `\
   <header class="header">
@@ -111,5 +113,12 @@ const statsTemplate = `\
   </div>`;
 
 const stats = createElementDOM(statsTemplate);
+
+const backBtn = stats.querySelector('.header__back');
+
+backBtn.onclick = () => {
+  initGame();
+  renderScreen(intro);
+};
 
 export default stats;

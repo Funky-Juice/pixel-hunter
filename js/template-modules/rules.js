@@ -1,5 +1,6 @@
 import createElementDOM from '../create-dom-element';
-import {getNextLevel} from '../display-screens';
+import {getNextLevel, initGame, renderScreen} from '../display-screens';
+import intro from './intro';
 
 const header = `\
   <header class="header">
@@ -36,6 +37,7 @@ const rulesTemplate = `\
 const rulesElement = createElementDOM(rulesTemplate);
 
 const rulesSubmit = rulesElement.querySelector('.rules__button');
+const backBtn = rulesElement.querySelector('.header__back');
 
 rulesElement.querySelector('.rules__input').oninput = (evt) => {
   rulesSubmit.disabled = (!evt.target.value);
@@ -43,6 +45,11 @@ rulesElement.querySelector('.rules__input').oninput = (evt) => {
 
 rulesSubmit.onclick = () => {
   getNextLevel();
+};
+
+backBtn.onclick = () => {
+  initGame();
+  renderScreen(intro);
 };
 
 export default rulesElement;

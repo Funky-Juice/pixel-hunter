@@ -1,6 +1,12 @@
+import createElementDOM from '../create-dom-element';
+import {initGame, renderScreen} from '../display-screens';
 import {INIT_STATE} from '../game-data';
+import intro from './intro';
+import {setTimer, resetTimer} from '../timer';
 
-export default (state) => `\
+export default (state) => {
+
+  const header = `\
   <header class="header">
     <div class="header__back">
       <span class="back">
@@ -16,3 +22,19 @@ export default (state) => `\
         <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`).join('')}
     </div>
   </header>`;
+
+  const gameElement = createElementDOM(header);
+
+  const timerElem = gameElement.querySelector('.game__timer');
+  const backBtn = gameElement.querySelector('.header__back');
+
+  setTimer(state, timerElem);
+
+  backBtn.onclick = () => {
+    resetTimer();
+    initGame();
+    renderScreen(intro);
+  };
+
+  return gameElement;
+};

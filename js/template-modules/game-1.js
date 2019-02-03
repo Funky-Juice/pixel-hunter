@@ -1,10 +1,7 @@
 import createElementDOM from '../create-dom-element';
-import {getNextLevel} from '../display-screens';
 import headerTemplate from './header';
 import scoresTemplate from './scores';
-import {setTimer} from '../timer';
-import {setScores} from '../scoring';
-import {changeLive} from '../utils';
+import {setCorrectAnswer, setWrongAnswer} from '../utils';
 
 export default (data, state, scores) => {
 
@@ -26,7 +23,6 @@ export default (data, state, scores) => {
     </form>`;
 
   const gameTemplate = `\
-    ${headerTemplate(state)}
     <div class="game">
       <p class="game__task">${data.description}</p>
       ${form}
@@ -35,11 +31,11 @@ export default (data, state, scores) => {
 
   const gameElement = createElementDOM(gameTemplate);
 
+  gameElement.insertBefore(headerTemplate(state), gameElement.firstChild);
+
   const gameInputs = gameElement.querySelectorAll('.game__answer input');
   const timerElem = gameElement.querySelector('.game__timer');
 
-  const timerId = setTimer(state, timerElem);
-  
   const answers = new Array(data.content.length);
 
   for (const input of gameInputs) {
@@ -48,17 +44,11 @@ export default (data, state, scores) => {
 
       if (!answers.includes(undefined)) {
         if (answers.every((it, i) => it === data.answer[i])) {
-          setScores(timerElem.textContent, state);
-          clearInterval(timerId);
-          getNextLevel();
-          state.level++;
+          setCorrectAnswer(timerElem);
         } else {
-          changeLive();
-          clearInterval(timerId);
-          getNextLevel();
-          state.level++;
+          setWrongAnswer();
         }
-      };
+      }
     };
   }
 
