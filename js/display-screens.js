@@ -24,7 +24,7 @@ const renderScreen = (elem) => {
 const getNextLevel = () => {
   let question = questionsData.next().value;
   if (!question || gameState.lives < 0) {
-    return renderScreen(stats);
+    return renderScreen(stats(gameScores));
   }
 
   switch (question.type) {

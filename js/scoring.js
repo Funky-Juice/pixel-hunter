@@ -1,4 +1,4 @@
-import {gameScores} from './display-screens';
+import {gameScores, gameState} from './display-screens';
 
 const timeInterval = {
   fast: 20,
@@ -18,5 +18,26 @@ export const setScores = (timer, state) => {
     gameScores[state.level] = 'slow';
   } else {
     gameScores[state.level] = 'correct';
+  }
+};
+
+export const resultScores = () => {
+  if (gameState.lives < 0) {
+    return {};
+  } else {
+    const correctAnswers = gameScores.filter((it) => (it !== 'wrong' && it !== 'unknown')).length;
+    const fastAnswers = gameScores.filter((it) => it === 'fast').length;
+    const slowAnswers = gameScores.filter((it) => it === 'slow').length;
+
+    return {
+      fastAnswers: fastAnswers,
+      slowAnswers: slowAnswers,
+      lives: gameState.lives,
+      scores: correctAnswers * scores.correct,
+      speedBonus: fastAnswers * scores.bonus,
+      livesBonus: gameState.lives * scores.bonus,
+      penalty: slowAnswers * -scores.penalty,
+      total: (correctAnswers * scores.correct) + (fastAnswers * scores.bonus) + (gameState.lives * scores.bonus) + (slowAnswers * -scores.penalty)
+    };
   }
 };
