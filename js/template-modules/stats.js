@@ -1,7 +1,7 @@
 import createElementDOM from '../create-dom-element';
 import {initGame, renderScreen} from '../display-screens';
 import {resultScores} from '../scoring';
-import intro from './intro';
+import intro from '../view/intro-view';
 
 export default (scores) => {
   const result = resultScores();
@@ -80,7 +80,7 @@ export default (scores) => {
 
   backBtn.onclick = () => {
     initGame();
-    renderScreen(intro);
+    renderScreen(intro());
   };
 
   return stats;

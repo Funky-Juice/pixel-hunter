@@ -1,4 +1,4 @@
 import {renderScreen} from './display-screens';
-import intro from './template-modules/intro';
+import intro from './view/intro-view';
 
-renderScreen(intro);
+renderScreen(intro());

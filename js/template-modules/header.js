@@ -1,7 +1,7 @@
 import createElementDOM from '../create-dom-element';
 import {initGame, renderScreen} from '../display-screens';
 import {INIT_STATE} from '../game-data';
-import intro from './intro';
+import intro from '../view/intro-view';
 import {setTimer, resetTimer} from '../timer';
 
 export default (state) => {
@@ -33,7 +33,7 @@ export default (state) => {
   backBtn.onclick = () => {
     resetTimer();
     initGame();
-    renderScreen(intro);
+    renderScreen(intro());
   };
 
   return gameElement;
