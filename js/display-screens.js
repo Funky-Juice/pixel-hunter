@@ -1,6 +1,4 @@
-import gameOneElement from './template-modules/game-1';
-import gameTwoElement from './template-modules/game-2';
-import gameThreeElement from './template-modules/game-3';
+import game from './template-modules/game';
 import stats from './template-modules/stats';
 import {questions, INIT_STATE, initScores} from './game-data';
 
@@ -27,15 +25,7 @@ const getNextLevel = () => {
     return renderScreen(stats(gameScores));
   }
 
-  switch (question.type) {
-    case 'single': renderScreen(gameTwoElement(question, gameState, gameScores));
-      break;
-    case 'double': renderScreen(gameOneElement(question, gameState, gameScores));
-      break;
-    case 'triple': renderScreen(gameThreeElement(question, gameState, gameScores));
-      break;
-  }
-  return true;
+  return renderScreen(game(question, gameState, gameScores));
 };
 
 export {initGame, renderScreen, getNextLevel, gameState, gameScores};
