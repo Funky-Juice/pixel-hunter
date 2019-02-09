@@ -2,7 +2,7 @@ const questions = [
   {
     type: 'single',
     content: ['http://placehold.it/705x455'],
-    answer: 'paint',
+    answer: ['paint'],
     description: 'Угадай, фото или рисунок?'
   },
   {
@@ -14,19 +14,19 @@ const questions = [
   {
     type: 'triple',
     content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
-    answer: 2,
+    answer: ['2'],
     description: 'Найдите рисунок среди изображений'
   },
   {
     type: 'single',
     content: ['http://placehold.it/705x455'],
-    answer: 'paint',
+    answer: ['paint'],
     description: 'Угадай, фото или рисунок?'
   },
   {
     type: 'triple',
     content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
-    answer: 2,
+    answer: ['2'],
     description: 'Найдите рисунок среди изображений'
   },
   {
@@ -38,25 +38,25 @@ const questions = [
   {
     type: 'triple',
     content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
-    answer: 2,
+    answer: ['2'],
     description: 'Найдите рисунок среди изображений'
   },
   {
     type: 'single',
     content: ['http://placehold.it/705x455'],
-    answer: 'paint',
+    answer: ['paint'],
     description: 'Угадай, фото или рисунок?'
   },
   {
     type: 'triple',
     content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
-    answer: 2,
+    answer: ['2'],
     description: 'Найдите рисунок среди изображений'
   },
   {
     type: 'single',
     content: ['http://placehold.it/705x455'],
-    answer: 'paint',
+    answer: ['paint'],
     description: 'Угадай, фото или рисунок?'
   }
 ];

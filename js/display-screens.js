@@ -1,6 +1,18 @@
-import game from './template-modules/game';
-import stats from './template-modules/stats';
+import emitter from './emitter';
+import {setCorrectAnswer, setWrongAnswer} from './utils';
 import {questions, INIT_STATE, initScores} from './game-data';
+import stats from './template-modules/stats';
+import LevelView from './view/level-view';
+import HeaderView from './view/header-view';
+import {timer} from './timer';
+
+emitter.on('answer', (answer) => {
+  if (answer) {
+    setCorrectAnswer(timer);
+  } else {
+    setWrongAnswer();
+  }
+});
 
 const mainElement = document.getElementById('main');
 
@@ -14,18 +26,22 @@ const initGame = () => {
   gameScores = initScores.slice(0);
 };
 
-const renderScreen = (elem) => {
+const renderScreen = (...elem) => {
   mainElement.innerHTML = '';
-  mainElement.appendChild(elem);
+  // юзаем lastChild, т.к. firstChild возвращает пустую строку из-за отступов в шаблоне
+  elem.forEach((it) => mainElement.appendChild(it.lastChild));
 };
 
 const getNextLevel = () => {
+
   let question = questionsData.next().value;
   if (!question || gameState.lives < 0) {
-    return renderScreen(stats(gameScores));
+    renderScreen(stats(gameScores));
+    return;
   }
 
-  return renderScreen(game(question, gameState, gameScores));
+  renderScreen(new HeaderView(gameState).element, new LevelView(question, gameState, gameScores).element);
+  return;
 };
 
 export {initGame, renderScreen, getNextLevel, gameState, gameScores};

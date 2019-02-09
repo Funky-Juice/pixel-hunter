@@ -8,7 +8,7 @@ export const changeLive = () => {
 };
 
 export const setCorrectAnswer = (timer) => {
-  setScores(timer.textContent, gameState);
+  setScores(timer, gameState);
   resetTimer();
   getNextLevel();
   gameState.level++;

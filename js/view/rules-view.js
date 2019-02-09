@@ -1,19 +1,15 @@
-import {getNextLevel, initGame, renderScreen} from '../display-screens';
-import intro from './intro-view';
+import {getNextLevel} from '../display-screens';
 import AbstractView from '../view';
-import HeaderView from './header-view';
 
 
 class RulesView extends AbstractView {
   constructor() {
     super();
-    this.header = new HeaderView();
   }
 
   getMarkup() {
-    return `
-      ${this.header.getMarkup()}
-      <div class="rules  central--none">
+    return `\
+      <div class="rules central--none">
         <h1 class="rules__title">Правила</h1>
         <p class="rules__description">Угадай 10 раз для каждого изображения фото
           <img src="img/photo_icon.png" width="16" height="16"> или рисунок
@@ -33,7 +29,6 @@ class RulesView extends AbstractView {
 
   bindHandlers() {
     const rulesSubmit = this.element.querySelector('.rules__button');
-    const backBtn = this.element.querySelector('.header__back');
 
     this.element.querySelector('.rules__input').oninput = (evt) => {
       rulesSubmit.disabled = (!evt.target.value);
@@ -41,11 +36,6 @@ class RulesView extends AbstractView {
 
     rulesSubmit.onclick = () => {
       getNextLevel();
-    };
-
-    backBtn.onclick = () => {
-      initGame();
-      renderScreen(intro());
     };
   }
 }

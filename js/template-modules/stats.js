@@ -68,10 +68,12 @@ export default (scores) => {
     </table>`;
 
   const statsTemplate = `\
-    ${header}
-    <div class="result">
-      <h1>${result.total ? 'Победа!' : 'Поражение'}</h1>
-      ${tableTemplate}
+    <div>
+      ${header}
+      <div class="result">
+        <h1>${result.total ? 'Победа!' : 'Поражение'}</h1>
+        ${tableTemplate}
+      </div>
     </div>`;
 
   const stats = createElementDOM(statsTemplate);

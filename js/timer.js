@@ -2,9 +2,10 @@ import {gameState, getNextLevel} from './display-screens';
 import {gameScores} from './display-screens';
 
 let timerId = null;
+export let timer = null;
 
 export const setTimer = (state, elem) => {
-  let timer = state.timer;
+  timer = state.timer;
   elem.innerHTML = timer;
 
   timerId = setInterval(() => {

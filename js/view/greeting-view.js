@@ -1,11 +1,12 @@
 import {renderScreen} from '../display-screens';
 import rules from './rules-view';
 import AbstractView from '../view';
+import HeaderView from './header-view';
 
 class GreetingView extends AbstractView {
 
   getMarkup() {
-    return `
+    return `\
       <div class="greeting  central--blur">
         <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
         <h1 class="greeting__asterisk">*</h1>
@@ -23,7 +24,7 @@ class GreetingView extends AbstractView {
 
   bindHandlers() {
     this.element.querySelector('.greeting__continue').onclick = () => {
-      renderScreen(rules());
+      renderScreen(new HeaderView().element, rules());
     };
   }
 }
