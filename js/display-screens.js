@@ -1,9 +1,10 @@
 import emitter from './emitter';
 import {setCorrectAnswer, setWrongAnswer} from './utils';
 import {questions, INIT_STATE, initScores} from './game-data';
-import stats from './template-modules/stats';
-import LevelView from './view/level-view';
 import HeaderView from './view/header-view';
+import LevelView from './view/level-view';
+import StatsView from './view/stats-view';
+import {resultScores} from './scoring';
 import {timer} from './timer';
 
 emitter.on('answer', (answer) => {
@@ -36,7 +37,7 @@ const getNextLevel = () => {
 
   let question = questionsData.next().value;
   if (!question || gameState.lives < 0) {
-    renderScreen(stats(gameScores));
+    renderScreen(new HeaderView().element, new StatsView(gameScores, resultScores()).element);
     return;
   }
 

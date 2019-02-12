@@ -30,8 +30,8 @@ export const resultScores = () => {
     const slowAnswers = gameScores.filter((it) => it === 'slow').length;
 
     return {
-      fastAnswers: fastAnswers,
-      slowAnswers: slowAnswers,
+      fastAnswers,
+      slowAnswers,
       lives: gameState.lives,
       scores: correctAnswers * scores.correct,
       speedBonus: fastAnswers * scores.bonus,
