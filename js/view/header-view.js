@@ -1,8 +1,6 @@
+import {INIT_STATE} from '../data/game-data';
+import emitter from '../emitter';
 import AbstractView from '../view';
-import {initGame, renderScreen} from '../display-screens';
-import {INIT_STATE} from '../game-data';
-import intro from '../view/intro-view';
-import {setTimer, resetTimer} from '../timer';
 
 export default class HeaderView extends AbstractView {
 
@@ -21,7 +19,7 @@ export default class HeaderView extends AbstractView {
               <img src="img/logo_small.png" width="101" height="44">
             </span>
           </div>
-          <h1 class="game__timer"></h1>
+          <h1 class="game__timer">${this.state.time}</h1>
           <div class="game__lives">
             ${[...Array(INIT_STATE.lives - this.state.lives)].map(() => `\
               <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`).join('')}
@@ -43,17 +41,10 @@ export default class HeaderView extends AbstractView {
   }
 
   bindHandlers() {
-    const timerElem = this.element.querySelector('.game__timer');
-    const backBtn = this.element.querySelector('.header__back');
+    const restartBtn = this.element.querySelector('.header__back');
 
-    if (this.state) {
-      setTimer(this.state, timerElem);
-    }
-
-    backBtn.onclick = () => {
-      resetTimer();
-      initGame();
-      renderScreen(intro());
+    restartBtn.onclick = () => {
+      emitter.emit('restart');
     };
   }
 }

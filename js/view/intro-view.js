@@ -1,4 +1,4 @@
-import {renderScreen} from '../display-screens';
+import renderScreen from '../render-screens';
 import greeting from './greeting-view';
 import AbstractView from '../view';
 
@@ -16,9 +16,9 @@ class IntroView extends AbstractView {
 
   bindHandlers() {
     this.element.querySelector('.intro__asterisk').onclick = () => {
-      renderScreen(greeting());
+      renderScreen(greeting);
     };
   }
 }
 
-export default () => new IntroView().element;
+export default new IntroView().element;

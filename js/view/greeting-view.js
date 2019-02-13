@@ -1,4 +1,4 @@
-import {renderScreen} from '../display-screens';
+import renderScreen from '../render-screens';
 import rules from './rules-view';
 import AbstractView from '../view';
 import HeaderView from './header-view';
@@ -24,9 +24,14 @@ class GreetingView extends AbstractView {
 
   bindHandlers() {
     this.element.querySelector('.greeting__continue').onclick = () => {
-      renderScreen(new HeaderView().element, rules());
+      const element = document.createElement('div');
+
+      element.appendChild(new HeaderView().element);
+      element.appendChild(rules);
+
+      renderScreen(element);
     };
   }
 }
 
-export default () => new GreetingView().element;
+export default new GreetingView().element;

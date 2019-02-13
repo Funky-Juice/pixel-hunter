@@ -54,11 +54,14 @@ export default class FormView extends AbstractView {
     let result;
 
     switch (this.question.type) {
-      case 'single': result = singleGameForm(this.question);
+      case 'single':
+        result = singleGameForm(this.question);
         break;
-      case 'double': result = doubleGameForm(this.question);
+      case 'double':
+        result = doubleGameForm(this.question);
         break;
-      case 'triple': result = tripleGameForm(this.question);
+      case 'triple':
+        result = tripleGameForm(this.question);
         break;
     }
     return result;

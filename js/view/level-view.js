@@ -4,9 +4,9 @@ import FormView from './form-view';
 import ScoresView from './scores-view';
 
 export default class LevelView extends AbstractView {
-  constructor(levelData, gameState, gameScores) {
+  constructor(levelData, gameScores) {
     super();
-    this.data = levelData;
+    this.level = levelData;
     this.form = new FormView(levelData);
     this.scores = new ScoresView(gameScores);
   }
@@ -14,7 +14,9 @@ export default class LevelView extends AbstractView {
   getMarkup() {
     return `\
       <div class="game">
-        <p class="game__task">${this.data.description}</p>
+        <p class="game__task">
+          ${this.level.description}
+        </p>
         ${this.form.getMarkup()}
         ${this.scores.getMarkup()}
       </div>`;
@@ -23,14 +25,14 @@ export default class LevelView extends AbstractView {
   bindHandlers() {
     let answerElem = null;
 
-    if (this.data.type === 'triple') {
+    if (this.level.type === 'triple') {
       answerElem = '.game__option';
     } else {
       answerElem = '.game__answer input';
     }
 
     const levelAnswers = this.element.querySelectorAll(answerElem);
-    const answersList = new Array(this.data.answer.length);
+    const answersList = new Array(this.level.answer.length);
 
     for (const answer of levelAnswers) {
 
@@ -39,7 +41,7 @@ export default class LevelView extends AbstractView {
 
         if (!answersList.includes(undefined)) {
 
-          const result = answersList.every((it, i) => it === this.data.answer[i]);
+          const result = answersList.every((it, i) => it === this.level.answer[i]);
           emitter.emit('answer', result);
         }
       };

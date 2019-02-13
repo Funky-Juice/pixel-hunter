@@ -1,4 +1,4 @@
-import {getNextLevel} from '../display-screens';
+import startGame from '../game-screen';
 import AbstractView from '../view';
 
 
@@ -35,9 +35,9 @@ class RulesView extends AbstractView {
     };
 
     rulesSubmit.onclick = () => {
-      getNextLevel();
+      startGame();
     };
   }
 }
 
-export default () => new RulesView().element;
+export default new RulesView().element;

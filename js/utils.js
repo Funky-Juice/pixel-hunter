@@ -1,22 +1,70 @@
-import {gameScores, gameState, getNextLevel} from './display-screens';
-import {resetTimer} from './timer';
-import {setScores} from './scoring';
+import {questions, points, speed} from './data/game-data';
 
-export const changeLive = () => {
-  gameState.lives--;
-  gameScores[gameState.level] = 'wrong';
+export const setLives = (game, lives) => {
+  return Object.assign({}, game, {
+    lives: lives
+  });
 };
 
-export const setCorrectAnswer = (timer) => {
-  setScores(timer, gameState);
-  resetTimer();
-  getNextLevel();
-  gameState.level++;
+export const setCurrentLevel = (game, level) => {
+  return Object.assign({}, game, {
+    level: level
+  });
 };
 
-export const setWrongAnswer = () => {
-  changeLive();
-  resetTimer();
-  getNextLevel();
-  gameState.level++;
+export const hasLevel = (num) => {
+  return typeof questions[num] !== 'undefined';
+};
+
+export const getLevel = (num) => {
+  return questions[num];
+};
+
+export const setTime = (game, time) => {
+  return Object.assign({}, game, {time: time});
+};
+
+export const setScores = (game, scores, isWrong) => {
+  let scoresResult = scores.slice(0);
+
+  if (isWrong) {
+    scoresResult[game.level] = 'wrong';
+    return scoresResult;
+  }
+
+  switch (true) {
+    case game.time < speed.timeOver:
+      scoresResult[game.level] = 'wrong';
+      break;
+    case game.time >= speed.fast:
+      scoresResult[game.level] = 'fast';
+      break;
+    case game.time <= speed.slow:
+      scoresResult[game.level] = 'slow';
+      break;
+    default:
+      scoresResult[game.level] = 'correct';
+  }
+  return scoresResult;
+};
+
+export const getResult = (game, scores) => {
+  if (game.lives < 0) {
+    return {};
+  } else {
+    const correctAnswers = scores.filter((it) => (it !== 'wrong' && it !== 'unknown')).length;
+    const fastAnswers = scores.filter((it) => it === 'fast').length;
+    const slowAnswers = scores.filter((it) => it === 'slow').length;
+
+    return {
+      fastAnswers,
+      slowAnswers,
+      lives: game.lives,
+      scores: correctAnswers * points.correct,
+      speedBonus: fastAnswers * points.bonus,
+      livesBonus: game.lives * points.bonus,
+      penalty: slowAnswers * -points.penalty,
+      total: (correctAnswers * points.correct) + (fastAnswers * points.bonus) + (game.lives * points.bonus) + (slowAnswers * -points.penalty)
+    };
+  }
 };
