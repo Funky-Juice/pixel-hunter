@@ -1,11 +1,14 @@
+import emitter from '../emitter';
 import AbstractView from '../view';
+import HeaderView from '../view/header-view';
 
-export default class StatsView extends AbstractView {
+class StatsView extends AbstractView {
 
   constructor(scores, result) {
     super();
     this.scores = scores;
     this.result = result;
+    this.header = new HeaderView();
   }
 
   getMarkup() {
@@ -43,6 +46,7 @@ export default class StatsView extends AbstractView {
 
     return `
       <div>
+        <div>${this.header.getMarkup()}</div>
         <div class="result">
           <h1>${this.result.total ? 'Победа!' : 'Поражение'}</h1>          
           <table class="result__table">
@@ -65,4 +69,14 @@ export default class StatsView extends AbstractView {
         </div>
       </div>`;
   }
+
+  bindHandlers() {
+    const restartBtn = this.element.querySelector('.header__back');
+
+    restartBtn.onclick = () => {
+      emitter.emit('restart');
+    };
+  }
 }
+
+export default (scores, result) => new StatsView(scores, result).element;

@@ -1,14 +1,17 @@
-import startGame from '../game-screen';
+import emitter from '../emitter';
+import Application from '../application';
 import AbstractView from '../view';
-
+import HeaderView from '../view/header-view';
 
 class RulesView extends AbstractView {
   constructor() {
     super();
+    this.header = new HeaderView();
   }
 
   getMarkup() {
     return `\
+      <div>${this.header.getMarkup()}</div>
       <div class="rules central--none">
         <h1 class="rules__title">Правила</h1>
         <p class="rules__description">Угадай 10 раз для каждого изображения фото
@@ -28,14 +31,19 @@ class RulesView extends AbstractView {
   }
 
   bindHandlers() {
+    const restartBtn = this.element.querySelector('.header__back');
     const rulesSubmit = this.element.querySelector('.rules__button');
 
     this.element.querySelector('.rules__input').oninput = (evt) => {
       rulesSubmit.disabled = (!evt.target.value);
     };
 
+    restartBtn.onclick = () => {
+      emitter.emit('restart');
+    };
+
     rulesSubmit.onclick = () => {
-      startGame();
+      Application.showGame();
     };
   }
 }
