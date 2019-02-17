@@ -2,100 +2,104 @@ import HeaderView from './view/header-view';
 import LevelView from './view/level-view';
 import StatsView from './view/stats-view';
 import intro from './view/intro-view';
-import gameModel from './data/game-model';
+import GameModel from './data/game-model';
 import emitter from './emitter';
 import renderScreen from './render-screens';
 
-const root = document.createElement('div');
+class GamePresenter {
+  constructor() {
+    this.header = new HeaderView(GameModel.state);
+    this.content = new LevelView(GameModel.getCurrentLevel(), GameModel.scores);
 
-const game = {
-  header: new HeaderView(gameModel.state),
-  content: new LevelView(gameModel.getCurrentLevel(), gameModel.scores),
-  interval: '',
+    this.root = document.createElement('div');
+    this.root.appendChild(this.header.element);
+    this.root.appendChild(this.content.element);
+
+    emitter.on('answer', (answer) => game.onAnswer(answer));
+    emitter.on('restart', () => game.restartGame());
+
+    this._interval = null;
+  }
 
   startGame() {
-    gameModel.resetTime();
-    game.changeLevel();
+    GameModel.resetTime();
+    this.changeLevel();
 
-    game.interval = setInterval(() => {
-      gameModel.tick();
-      game.updateHeader();
+    this._interval = setInterval(() => {
+      GameModel.tick();
+      this.updateHeader();
 
-      if (gameModel.state.time < 0) {
-        game.stopGame();
-        gameModel.decreaseLive();
-        gameModel.calcScores(true);
-        game.nextGame();
+      if (GameModel.state.time < 0) {
+        this.stopGame();
+        GameModel.decreaseLive();
+        GameModel.calcScores(true);
+        this.nextGame();
       }
     }, 1000);
-  },
+  }
 
   stopGame() {
-    clearInterval(game.interval);
-  },
+    clearInterval(this._interval);
+  }
 
   nextGame() {
-    if (gameModel.isDead() || !gameModel.hasNextLevel()) {
-      game.endGame();
+    if (GameModel.isDead() || !GameModel.hasNextLevel()) {
+      this.endGame();
     } else {
-      gameModel.nextLevel();
-      game.startGame();
+      GameModel.nextLevel();
+      this.startGame();
     }
-  },
+  }
 
   restartGame() {
-    game.stopGame();
-    gameModel.restart();
+    this.stopGame();
+    GameModel.restart();
     renderScreen(intro);
-  },
+  }
 
   endGame() {
     const element = document.createElement('div');
     element.appendChild(new HeaderView().element);
-    element.appendChild(new StatsView(gameModel.scores, gameModel.result()).element);
+    element.appendChild(new StatsView(GameModel.scores, GameModel.result()).element);
 
     renderScreen(element);
-  },
+  }
 
   updateHeader() {
-    const header = new HeaderView(gameModel.state);
-    root.replaceChild(header.element, game.header.element);
-    game.header = header;
-  },
+    const header = new HeaderView(GameModel.state);
+    this.root.replaceChild(header.element, this.header.element);
+    this.header = header;
+  }
 
   changeLevel() {
-    game.updateHeader();
-    const level = new LevelView(gameModel.getCurrentLevel(), gameModel.scores);
+    this.updateHeader();
+    const level = new LevelView(GameModel.getCurrentLevel(), GameModel.scores);
 
-    game.changeContentView(level);
-  },
+    this.changeContentView(level);
+  }
 
   onAnswer(answer) {
-    game.stopGame();
+    this.stopGame();
 
     if (answer) {
-      gameModel.calcScores();
+      GameModel.calcScores();
     } else {
-      gameModel.decreaseLive();
-      gameModel.calcScores(true);
+      GameModel.decreaseLive();
+      GameModel.calcScores(true);
     }
-    game.nextGame();
-  },
+    this.nextGame();
+  }
 
   changeContentView(view) {
-    root.replaceChild(view.element, game.content.element);
-    game.content = view;
+    this.root.replaceChild(view.element, this.content.element);
+    this.content = view;
   }
-};
+}
 
-emitter.on('answer', (answer) => game.onAnswer(answer));
-emitter.on('restart', () => game.restartGame());
-
-root.appendChild(game.header.element);
-root.appendChild(game.content.element);
+const game = new GamePresenter();
 
 export default () => {
-  gameModel.restart();
+  GameModel.restart();
   game.startGame();
-  renderScreen(root);
+  renderScreen(game.root);
 };
