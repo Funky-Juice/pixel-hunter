@@ -1,3 +1,4 @@
+import errorScreen from './screen/error-screen';
 import introScreen from './screen/intro-screen';
 import greetingView from './screen/greeting-screen';
 import rulesView from './screen/rules-screen';
@@ -10,6 +11,8 @@ const renderScreen = (elem) => {
   mainElement.innerHTML = '';
   mainElement.appendChild(elem);
 };
+
+let gameData;
 
 export default class Application {
 
@@ -31,5 +34,14 @@ export default class Application {
 
   static showStats(scores, result) {
     renderScreen(statsScreen(scores, result));
+  }
+
+  static showError(error) {
+    renderScreen(errorScreen(error));
+  }
+
+  static set data(data) {
+    gameData = data;
+    console.log(gameData);
   }
 }
