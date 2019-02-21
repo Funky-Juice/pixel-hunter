@@ -28,7 +28,12 @@
   position: relative;
   border: 10px solid transparent;
 
+  width: 468px;
+  height: 458px;
   font-size: 0;
+
+  text-align: center;
+  vertical-align: middle;
 }
 
 .game__answer input {
@@ -78,6 +83,11 @@
 
 .game__content--wide {
 
+  .game__option {
+    width: 705px;
+    height: 455px;
+  }
+
   .game__answer {
     top: 208px;
   }
@@ -93,6 +103,9 @@
 
 .game__content--triple .game__option {
   cursor: pointer;
+
+  width: 304px;
+  height: 455px;
 
   &:hover {
     border-color: #df4e4e;
