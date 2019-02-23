@@ -25,11 +25,11 @@ export default class Application {
   }
 
   static showRules() {
-    renderScreen(rulesView);
+    renderScreen(rulesView());
   }
 
   static showGame() {
-    renderScreen(newGame());
+    renderScreen(newGame(gameData));
   }
 
   static showStats(scores, result) {
@@ -42,6 +42,5 @@ export default class Application {
 
   static set data(data) {
     gameData = data;
-    console.log(gameData);
   }
 }

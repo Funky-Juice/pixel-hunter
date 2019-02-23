@@ -1,4 +1,3 @@
-import emitter from '../emitter';
 import Application from '../application';
 import AbstractView from '../view';
 import HeaderView from '../view/header-view';
@@ -33,13 +32,14 @@ class RulesView extends AbstractView {
   bindHandlers() {
     const restartBtn = this.element.querySelector('.header__back');
     const rulesSubmit = this.element.querySelector('.rules__button');
+    const inputField = this.element.querySelector('.rules__input');
 
-    this.element.querySelector('.rules__input').oninput = (evt) => {
+    inputField.oninput = (evt) => {
       rulesSubmit.disabled = (!evt.target.value);
     };
 
     restartBtn.onclick = () => {
-      emitter.emit('restart');
+      Application.showIntro();
     };
 
     rulesSubmit.onclick = () => {
@@ -48,4 +48,4 @@ class RulesView extends AbstractView {
   }
 }
 
-export default new RulesView().element;
+export default () => new RulesView().element;

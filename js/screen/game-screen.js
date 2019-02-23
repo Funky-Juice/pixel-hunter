@@ -5,32 +5,33 @@ import LevelView from '../view/level-view';
 import Application from '../application';
 
 class GamePresenter {
-  constructor() {
-    this.header = new HeaderView(GameModel.state);
-    this.content = new LevelView(GameModel.getCurrentLevel(), GameModel.scores);
+  constructor(model) {
+    this.model = model;
+    this.header = new HeaderView(this.model.state);
+    this.content = new LevelView(this.model.getCurrentLevel(), this.model.scores);
 
     this.root = document.createElement('div');
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
 
-    emitter.on('answer', (answer) => game.onAnswer(answer));
-    emitter.on('restart', () => game.exitGame());
+    emitter.on('answer', (answer) => this.onAnswer(answer));
+    emitter.on('restart', () => this.exitGame());
 
     this._interval = null;
   }
 
   startGame() {
-    GameModel.resetTime();
+    this.model.resetTime();
     this.changeLevel();
 
     this._interval = setInterval(() => {
-      GameModel.tick();
+      this.model.tick();
       this.updateHeader();
 
-      if (GameModel.state.time < 0) {
+      if (this.model.state.time < 0) {
         this.stopGame();
-        GameModel.decreaseLive();
-        GameModel.calcScores(true);
+        this.model.decreaseLive();
+        this.model.calcScores(true);
         this.nextGame();
       }
     }, 1000);
@@ -41,37 +42,37 @@ class GamePresenter {
   }
 
   nextGame() {
-    if (GameModel.isDead() || !GameModel.hasNextLevel()) {
+    if (this.model.isDead() || !this.model.hasNextLevel()) {
       this.endGame();
     } else {
-      GameModel.nextLevel();
+      this.model.nextLevel();
       this.startGame();
     }
   }
 
   exitGame() {
     this.stopGame();
-    GameModel.restart();
+    this.model.restart();
     Application.showIntro();
   }
 
   restartGame() {
-    GameModel.restart();
+    this.model.restart();
   }
 
   endGame() {
-    Application.showStats(GameModel.scores, GameModel.result());
+    Application.showStats(this.model.scores, this.model.result());
   }
 
   updateHeader() {
-    const header = new HeaderView(GameModel.state);
+    const header = new HeaderView(this.model.state);
     this.root.replaceChild(header.element, this.header.element);
     this.header = header;
   }
 
   changeLevel() {
     this.updateHeader();
-    const level = new LevelView(GameModel.getCurrentLevel(), GameModel.scores);
+    const level = new LevelView(this.model.getCurrentLevel(), this.model.scores);
 
     this.changeContentView(level);
   }
@@ -80,10 +81,10 @@ class GamePresenter {
     this.stopGame();
 
     if (answer) {
-      GameModel.calcScores();
+      this.model.calcScores();
     } else {
-      GameModel.decreaseLive();
-      GameModel.calcScores(true);
+      this.model.decreaseLive();
+      this.model.calcScores(true);
     }
     this.nextGame();
   }
@@ -94,10 +95,12 @@ class GamePresenter {
   }
 }
 
-const game = new GamePresenter();
+export default (data) => {
+  const gameModel = new GameModel(data);
+  const game = new GamePresenter(gameModel);
 
-export default () => {
   game.restartGame();
   game.startGame();
+
   return game.root;
 };

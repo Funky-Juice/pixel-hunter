@@ -1,6 +1,69 @@
 import 'whatwg-fetch';
 import Application from './application';
 
+const mockData = [
+  {
+    type: 'single',
+    content: ['http://placehold.it/705x455'],
+    answer: ['paint'],
+    description: 'Угадай, фото или рисунок?'
+  },
+  {
+    type: 'double',
+    content: ['http://placehold.it/468x458', 'http://placehold.it/468x458'],
+    answer: ['paint', 'photo'],
+    description: 'Угадайте для каждого изображения фото или рисунок?'
+  },
+  {
+    type: 'triple',
+    content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
+    answer: ['2'],
+    description: 'Найдите рисунок среди изображений'
+  },
+  {
+    type: 'single',
+    content: ['http://placehold.it/705x455'],
+    answer: ['paint'],
+    description: 'Угадай, фото или рисунок?'
+  },
+  {
+    type: 'triple',
+    content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
+    answer: ['2'],
+    description: 'Найдите рисунок среди изображений'
+  },
+  {
+    type: 'double',
+    content: ['http://placehold.it/468x458', 'http://placehold.it/468x458'],
+    answer: ['paint', 'photo'],
+    description: 'Угадайте для каждого изображения фото или рисунок?'
+  },
+  {
+    type: 'triple',
+    content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
+    answer: ['2'],
+    description: 'Найдите рисунок среди изображений'
+  },
+  {
+    type: 'single',
+    content: ['http://placehold.it/705x455'],
+    answer: ['paint'],
+    description: 'Угадай, фото или рисунок?'
+  },
+  {
+    type: 'triple',
+    content: ['http://placehold.it/304x455', 'http://placehold.it/304x455', 'http://placehold.it/304x455'],
+    answer: ['2'],
+    description: 'Найдите рисунок среди изображений'
+  },
+  {
+    type: 'single',
+    content: ['http://placehold.it/705x455'],
+    answer: ['paint'],
+    description: 'Угадай, фото или рисунок?'
+  }
+];
+
 
 const status = (response) => {
   if (response.status >= '200' && response.status < 300) {
@@ -10,11 +73,11 @@ const status = (response) => {
   }
 };
 
-window.fetch('https://intensive-ecmascript-server-nnpnvhhedl.now.sh/pixel-hunter/questions')
+window.fetch('https://es.dump.academy/pixel-hunter/questions')
     .then(status)
     .then((response) => response.json())
-    .then((data) => {
-      Application.data = data;
-      Application.showIntro();
+    .then(() => {
+      Application.data = mockData;
     })
+    .then(() => Application.showIntro())
     .catch((err) => Application.showError(err));

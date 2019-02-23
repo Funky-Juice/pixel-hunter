@@ -1,4 +1,9 @@
-import {questions, points, speed} from './data/game-data';
+import {points, speed} from './data/game-params';
+
+
+export const initScores = (questions) => {
+  return Array.from({length: questions.length}, () => 'unknown');
+};
 
 export const setLives = (game, lives) => {
   return Object.assign({}, game, {
@@ -12,11 +17,11 @@ export const setCurrentLevel = (game, level) => {
   });
 };
 
-export const hasLevel = (num) => {
+export const hasLevel = (questions, num) => {
   return typeof questions[num] !== 'undefined';
 };
 
-export const getLevel = (num) => {
+export const getLevel = (questions, num) => {
   return questions[num];
 };
 

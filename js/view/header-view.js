@@ -1,4 +1,4 @@
-import {INIT_STATE} from '../data/game-data';
+import {INIT_STATE} from '../data/game-params';
 import emitter from '../emitter';
 import AbstractView from '../view';
 

@@ -1,10 +1,12 @@
-import {INIT_STATE, initScores} from './game-data';
-import {setTime, setLives, setScores, getLevel, hasLevel, setCurrentLevel, getResult} from '../utils';
+import {initScores, setTime, setLives, setScores, getLevel, hasLevel, setCurrentLevel, getResult} from '../utils';
+import {INIT_STATE} from './game-params';
 
-class GameModel {
-  constructor(state = INIT_STATE, scores = initScores) {
-    this._state = state;
-    this._scores = scores;
+
+export default class GameModel {
+  constructor(data) {
+    this._data = data;
+    this._state = INIT_STATE;
+    this._scores = this.initScores();
   }
 
   get state() {
@@ -17,11 +19,15 @@ class GameModel {
 
   restart() {
     this._state = INIT_STATE;
-    this._scores = initScores;
+    this._scores = this.initScores();
+  }
+
+  initScores() {
+    return initScores(this._data);
   }
 
   hasNextLevel() {
-    return hasLevel(this._state.level + 1);
+    return hasLevel(this._data, this._state.level + 1);
   }
 
   nextLevel() {
@@ -45,7 +51,7 @@ class GameModel {
   }
 
   getCurrentLevel() {
-    return getLevel(this._state.level);
+    return getLevel(this._data, this._state.level);
   }
 
   calcScores(isWrong) {
@@ -56,5 +62,3 @@ class GameModel {
     return getResult(this._state, this._scores);
   }
 }
-
-export default new GameModel();
