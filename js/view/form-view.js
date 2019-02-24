@@ -10,15 +10,15 @@ export default class FormView extends AbstractView {
   getMarkup() {
     const singleGameForm = (data) => `\
     <form class="game__content game__content--wide">
-      ${data.content.map((img, i) => `\
+      ${data.answers.map((answer, i) => `\
         <div class="game__option">
-          <img src="${img}" alt="Option ${i + 1}" width="705" height="455">
+          <img src="${answer.image.url}" alt="Option ${i + 1}" width="${answer.image.width}" height="${answer.image.height}">
           <label class="game__answer game__answer--photo">
             <input data-id="${i}" name="question${i + 1}" type="radio" value="photo">
             <span>Фото</span>
           </label>
           <label class="game__answer game__answer--paint">
-            <input data-id="${i}" name="question${i + 1}" type="radio" value="paint">
+            <input data-id="${i}" name="question${i + 1}" type="radio" value="painting">
             <span>Рисунок</span>
           </label>
         </div>
@@ -27,15 +27,15 @@ export default class FormView extends AbstractView {
 
     const doubleGameForm = (data) => `\
     <form class="game__content">
-      ${data.content.map((img, i) => `\
+      ${data.answers.map((answer, i) => `\
         <div class="game__option">
-          <img src="${img}" alt="Option${i}" width="468" height="458">
+          <img src="${answer.image.url}" alt="Option${i}" width="${answer.image.width}" height="${answer.image.height}">
           <label class="game__answer game__answer--photo">
             <input data-id="${i}" name="question${i + 1}" type="radio" value="photo">
             <span>Фото</span>
           </label>
           <label class="game__answer game__answer--paint">
-            <input data-id="${i}" name="question${i + 1}" type="radio" value="paint">
+            <input data-id="${i}" name="question${i + 1}" type="radio" value="painting">
             <span>Рисунок</span>
           </label>
         </div>
@@ -44,9 +44,9 @@ export default class FormView extends AbstractView {
 
     const tripleGameForm = (data) => `\
     <form class="game__content game__content--triple">
-      ${data.content.map((img, i) => `\
-        <div class="game__option" data-id="0" value="${i}">
-          <img src="${img}" alt="Option ${i + 1}" width="304" height="455">
+      ${data.answers.map((answer, i) => `\
+        <div class="game__option" data-id="0" value="${answer.type}">
+          <img src="${answer.image.url}" alt="Option ${i + 1}" width="${answer.image.width}" height="${answer.image.height}">
         </div>
       `).join('')}
     </form>`;
@@ -54,13 +54,13 @@ export default class FormView extends AbstractView {
     let result;
 
     switch (this.question.type) {
-      case 'single':
+      case 'tinder-like':
         result = singleGameForm(this.question);
         break;
-      case 'double':
+      case 'two-of-two':
         result = doubleGameForm(this.question);
         break;
-      case 'triple':
+      case 'one-of-three':
         result = tripleGameForm(this.question);
         break;
     }

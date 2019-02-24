@@ -15,7 +15,7 @@ export default class LevelView extends AbstractView {
     return `\
       <div class="game">
         <p class="game__task">
-          ${this.level.description}
+          ${this.level.question}
         </p>
         ${this.form.getMarkup()}
         ${this.scores.getMarkup()}
@@ -25,24 +25,39 @@ export default class LevelView extends AbstractView {
   bindHandlers() {
     let answerElem = null;
 
-    if (this.level.type === 'triple') {
+    if (this.level.type === 'one-of-three') {
       answerElem = '.game__option';
     } else {
       answerElem = '.game__answer input';
     }
 
     const levelAnswers = this.element.querySelectorAll(answerElem);
-    const answersList = new Array(this.level.answer.length);
+    const answersList = new Array(this.level.answers.length);
 
     for (const answer of levelAnswers) {
-
       answer.onclick = () => {
-        answersList[answer.dataset.id] = answer.getAttribute('value');
 
-        if (!answersList.includes(undefined)) {
+        if (this.level.type === 'one-of-three') {
+          let question = '';
 
-          const result = answersList.every((it, i) => it === this.level.answer[i]);
+          if (this.level.question === 'Найдите рисунок среди изображений') {
+            question = 'painting';
+          } else {
+            question = 'photo';
+          }
+          const result = answer.getAttribute('value') === question;
+
           emitter.emit('answer', result);
+        } else {
+          answersList[answer.dataset.id] = answer.getAttribute('value');
+
+          if (!answersList.includes(undefined)) {
+            const result = answersList.every((it, i) => {
+              return it === this.level.answers[i].type;
+            });
+
+            emitter.emit('answer', result);
+          }
         }
       };
     }
