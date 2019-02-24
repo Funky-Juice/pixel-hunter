@@ -2,6 +2,7 @@ import emitter from '../emitter';
 import AbstractView from '../view';
 import FormView from './form-view';
 import ScoresView from './scores-view';
+import imageLoader from '../image-loader/image-loader';
 
 export default class LevelView extends AbstractView {
   constructor(levelData, gameScores) {
@@ -29,6 +30,11 @@ export default class LevelView extends AbstractView {
       answerElem = '.game__option';
     } else {
       answerElem = '.game__answer input';
+    }
+
+    const elem = this.element.querySelectorAll('.game__option img');
+    for (let i = 0; i < elem.length; i++) {
+      imageLoader(elem[i]).load(this.level.answers[i].image);
     }
 
     const levelAnswers = this.element.querySelectorAll(answerElem);
