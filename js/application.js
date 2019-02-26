@@ -28,8 +28,8 @@ export default class Application {
     renderScreen(rulesView());
   }
 
-  static showGame() {
-    renderScreen(newGame(gameData));
+  static showGame(userName) {
+    renderScreen(newGame(gameData, userName));
   }
 
   static showStats(scores, result) {

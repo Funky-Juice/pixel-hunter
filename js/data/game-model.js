@@ -3,8 +3,9 @@ import {INIT_STATE} from './game-params';
 
 
 export default class GameModel {
-  constructor(data) {
+  constructor(data, name) {
     this._data = data;
+    this._name = name;
     this._state = INIT_STATE;
     this._scores = this.initScores();
   }
@@ -15,6 +16,10 @@ export default class GameModel {
 
   get scores() {
     return this._scores;
+  }
+
+  get name() {
+    return this._name;
   }
 
   restart() {

@@ -43,7 +43,7 @@ class RulesView extends AbstractView {
     };
 
     rulesSubmit.onclick = () => {
-      Application.showGame();
+      Application.showGame(inputField.value);
     };
   }
 }

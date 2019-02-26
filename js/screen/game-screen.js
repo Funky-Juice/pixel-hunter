@@ -1,3 +1,4 @@
+import {sendGameResult} from '../actions';
 import GameModel from '../data/game-model';
 import emitter from '../emitter';
 import HeaderView from '../view/header-view';
@@ -61,6 +62,7 @@ class GamePresenter {
   }
 
   endGame() {
+    sendGameResult(this.model.name, this.model.scores, this.model.result());
     Application.showStats(this.model.scores, this.model.result());
   }
 
@@ -95,8 +97,8 @@ class GamePresenter {
   }
 }
 
-export default (data) => {
-  const gameModel = new GameModel(data);
+export default (data, userName) => {
+  const gameModel = new GameModel(data, userName);
   const game = new GamePresenter(gameModel);
 
   game.restartGame();
