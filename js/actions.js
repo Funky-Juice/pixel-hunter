@@ -24,7 +24,7 @@ export const getQuestions = () => {
 };
 
 export const sendGameResult = (username, scores, result) => {
-  window.fetch(`${API}/${username}`, {
+  return window.fetch(`${API}/${username}`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -32,4 +32,12 @@ export const sendGameResult = (username, scores, result) => {
       lives: result.lives,
     })
   });
+};
+
+export const getGameStats = (username) => {
+  return window.fetch(`${API}/${username}`)
+      .then(status)
+      .then((response) => response.json())
+      .then((data) => data)
+      .catch((err) => console.log(err));
 };

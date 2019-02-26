@@ -1,9 +1,10 @@
-import {sendGameResult} from '../actions';
+import {sendGameResult, getGameStats} from '../actions';
 import GameModel from '../data/game-model';
 import emitter from '../emitter';
 import HeaderView from '../view/header-view';
 import LevelView from '../view/level-view';
 import Application from '../application';
+
 
 class GamePresenter {
   constructor(model) {
@@ -62,8 +63,30 @@ class GamePresenter {
   }
 
   endGame() {
-    sendGameResult(this.model.name, this.model.scores, this.model.result());
-    Application.showStats(this.model.scores, this.model.result());
+    this.sendResults()
+        .then(() => this.getStats())
+        .then((res) => {
+          res.sort((a, b) => {
+            return b.date - a.date;
+          });
+          res.shift();
+          return res;
+        })
+        .then((data) => {
+          Application.showStats(this.model.scores, this.model.result(), data);
+        })
+        .catch((err) => {
+          console.log(err);
+          Application.showError(err);
+        });
+  }
+
+  sendResults() {
+    return sendGameResult(this.model.name, this.model.scores, this.model.result());
+  }
+
+  getStats() {
+    return getGameStats(this.model.name);
   }
 
   updateHeader() {

@@ -4,10 +4,11 @@ import HeaderView from '../view/header-view';
 
 class StatsView extends AbstractView {
 
-  constructor(scores, result) {
+  constructor(scores, result, stats) {
     super();
     this.scores = scores;
     this.result = result;
+    this.playerStats = stats;
     this.header = new HeaderView();
   }
 
@@ -65,6 +66,18 @@ class StatsView extends AbstractView {
             ${this.result.lives > 0 ? livesResultsRow : ''}
             ${this.result.slowAnswers > 0 ? slowResultsRow : ''}
             ${this.result.total ? totalResultsRow : ''}
+            
+            ${this.playerStats.map((item, i) => `
+              <tr>
+                <td>${i + 2}.</td>
+                <td colspan="2">
+                  <ul class="stats">
+                    ${item.stats.map((stats) =>`\
+                    <li class="stats__result stats__result--${stats}"></li>`).join('')}
+                  </ul>
+                </td>
+              </tr>            
+            `).join('')}
           </table>
         </div>
       </div>`;
@@ -79,4 +92,4 @@ class StatsView extends AbstractView {
   }
 }
 
-export default (scores, result) => new StatsView(scores, result).element;
+export default (scores, result, stats) => new StatsView(scores, result, stats).element;

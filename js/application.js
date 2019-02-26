@@ -32,8 +32,8 @@ export default class Application {
     renderScreen(newGame(gameData, userName));
   }
 
-  static showStats(scores, result) {
-    renderScreen(statsScreen(scores, result));
+  static showStats(scores, result, stats) {
+    renderScreen(statsScreen(scores, result, stats));
   }
 
   static showError(error) {
