@@ -40,7 +40,7 @@ const getFastAnswers = (data) => {
   let fastAnswers = 0;
 
   for (let i = 0; i < arrAnswers.length; i++) {
-    if (arrAnswers[i] === 'fast' ) {
+    if (arrAnswers[i] === 'fast') {
       fastAnswers++;
     }
   }
@@ -52,7 +52,7 @@ const getSlowAnswers = (data) => {
   let slowAnswers = 0;
 
   for (let i = 0; i < arrAnswers.length; i++) {
-    if (arrAnswers[i] === 'slow' ) {
+    if (arrAnswers[i] === 'slow') {
       slowAnswers++;
     }
   }

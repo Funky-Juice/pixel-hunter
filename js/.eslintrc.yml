@@ -1,4 +1,12 @@
-parser: babel-eslint
+parser: '@babel/eslint-parser'
+
+parserOptions:
+  requireConfigFile: false
+  babelOptions:
+    babelrc: false
+    configFile: false
+    presets:
+      - '@babel/preset-env'
 
 env:
   es6: true
@@ -10,4 +18,5 @@ extends: 'htmlacademy/es6'
 rules:
   camelcase: [2, { properties: 'never' }]
   quotes: [2, 'single']
+  max-nested-callbacks: [2, 4]
 #  linebreak-style: ["error", "windows"]

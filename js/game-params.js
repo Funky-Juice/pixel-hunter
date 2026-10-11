@@ -11,7 +11,7 @@ export const setLives = (data, lives) => {
   if (lives < 0) {
     throw new RangeError('lives < 0');
   }
-  const copiedObject = Object.assign({}, data, {lives: lives});
+  const copiedObject = Object.assign({}, data, {lives});
   if (data === copiedObject) {
     throw new Error('Returned object should not be equal to object in the parametrs of the function');
   }
@@ -25,7 +25,7 @@ export const setTimer = (data, timer) => {
   if (timer < 0) {
     throw new RangeError('timer < 0');
   }
-  const copiedObject = Object.assign({}, data, {timer: timer});
+  const copiedObject = Object.assign({}, data, {timer});
   if (data === copiedObject) {
     throw new Error('Returned object should not be equal to object in the parametrs of the function');
   }
