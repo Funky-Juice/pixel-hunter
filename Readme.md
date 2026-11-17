@@ -1,5 +1,22 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
+Зависимости обновлены с учебной сборки (Node `6.7.0`, Gulp `3.9.1`, Babel 6 `babel-preset-es2015`, Webpack через `gulp-webpack` `^1.5.0`, ESLint `3.9.0`) на версии из текущего `package.json`:
+
+- Node `>=20` (`engines.node`); раньше `npm start` был `gulp clean && gulp serve`
+- Gulp `^5.0.1`, сборка в `gulpfile.mjs` (`gulpfile.js` удалён)
+- Babel 7: `@babel/core` `^7.29.7`, `@babel/preset-env` `^7.29.7`
+- Webpack `^5.111.1` и `webpack-stream` `^7.0.0`
+- ESLint `^8.57.1`
+
+Запуск:
+
+```
+npm install
+npm start
+```
+
+`npm start` выполняет `gulp serve`.
+
 * Студент: [Сергей Иншаков](https://up.htmlacademy.ru/ecmascript/1/user/59949).
 * Наставник: [Евгений Лепёшкин](https://up.htmlacademy.ru/ecmascript/1/user/144641).
 
