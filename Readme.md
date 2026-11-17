@@ -1,52 +1,33 @@
-# Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
+# Пиксель хантер
 
-* Студент: [Сергей Иншаков](https://up.htmlacademy.ru/ecmascript/1/user/59949).
-* Наставник: [Евгений Лепёшкин](https://up.htmlacademy.ru/ecmascript/1/user/144641).
+Игра «Пиксель хантер». Автор — Сергей Иншаков. Интенсив [«Продвинутый JavaScript»](https://htmlacademy.ru/intensive/ecmascript) от HTML Academy.
 
----
+## Эта ветка
 
-_Не удаляйте и не изменяйте папки и файлы:_
-_`.editorconfig`, `.gitattributes`, `.gitignore`, `.travis.yml`, `package.json`._
+`mvp-server-rewrite` (бывшая `juice`) — отдельная линия от коммита `0c551a2` (24 ноября 2016, после module 2). Работа января–февраля 2019: MVP с игровым циклом и учебным сервером.
 
----
+## Архитектура
 
-### Памятка
+`Application` переключает экраны. Игровой цикл живёт в `GamePresenter` ([js/screen/game-screen.js](js/screen/game-screen.js)), состояние — в `GameModel` ([js/data/game-model.js](js/data/game-model.js)), разметка — во `view/`.
 
-#### 1. Зарегистрируйтесь на Гитхабе
+## Данные
 
-Если у вас ещё нет аккаунта на [github.com](https://github.com/join), скорее зарегистрируйтесь.
+Запросы через `whatwg-fetch` в [js/actions.js](js/actions.js):
 
-#### 2. Создайте форк
+- вопросы — `https://es.dump.academy/pixel-hunter/questions`;
+- отправка результата и чтение статистики — `https://intensive-ecmascript-server-dxttmcdylw.now.sh/pixel-hunter/stats`.
 
-Откройте репозиторий и нажмите кнопку «Fork» в правом верхнем углу. Репозиторий из Академии будет скопирован в ваш аккаунт.
+Если вопросы не загрузились, показывается экран ошибки. Картинки уровней подготавливает адаптер в `js/image-loader/`.
 
-<img width="769" alt="Press 'Fork'" src="https://cloud.githubusercontent.com/assets/259739/20264045/a1ddbf40-aa7a-11e6-9a1a-724a1c0123c8.png">
+## Отличие от `master`
 
-Получится вот так:
+На `master` шаблоны лежат в `js/template-modules/`, вопросы — в локальном `js/game-data.js`, плюс юнит-тесты module 4. Этих коммитов в данной ветке нет: игровой цикл написан заново и ходит на сервер.
 
-<img width="769" alt="Forked" src="https://cloud.githubusercontent.com/assets/259739/20264122/f63219a6-aa7a-11e6-945a-89818fc7c014.png">
-
-#### 3. Клонируйте репозиторий на свой компьютер
-
-Будьте внимательны: нужно клонировать свой репозиторий (форк), а не репозиторий Академии. Также обратите внимание, что клонировать репозиторий нужно через SSH, а не через HTTPS. Нажмите зелёную кнопку в правой части экрана, чтобы скопировать SSH-адрес вашего репозитория:
-
-<img width="769" alt="SSH" src="https://cloud.githubusercontent.com/assets/259739/20264180/42704126-aa7b-11e6-9ab4-73372b812a53.png">
-
-Клонировать репозиторий можно так:
+## Запуск
 
 ```
-git clone SSH-адрес_вашего_форка
+npm install
+npm start
 ```
 
-Команда клонирует репозиторий на ваш компьютер и подготовит всё необходимое для старта работы.
-
-#### 4. Начинайте обучение!
-
----
-
-<a href="https://htmlacademy.ru/intensive/ecmascript"><img align="left" width="50" height="50" title="HTML Academy" src="https://up.htmlacademy.ru/static/img/intensive/ecmascript/logo-for-github.svg"></a>
-
-Репозиторий создан для обучения на интенсивном онлайн‑курсе «[Продвинутый JavaScript](https://htmlacademy.ru/intensive/ecmascript)» от [HTML Academy](https://htmlacademy.ru).
-
-[travis-image]: https://travis-ci.org/htmlacademy-ecmascript/59949-pixel-hunter.svg?branch=master
-[travis-url]: https://travis-ci.org/htmlacademy-ecmascript/59949-pixel-hunter
+`npm start` выполняет `gulp clean && gulp serve`. В `package.json` указан Node `6.7.0`. Учебные API 2019 года могут не отвечать.
