@@ -16,6 +16,8 @@ class GamePresenter {
     this.root.appendChild(this.header.element);
     this.root.appendChild(this.content.element);
 
+    emitter.removeAllListeners('answer');
+    emitter.removeAllListeners('restart');
     emitter.on('answer', (answer) => this.onAnswer(answer));
     emitter.on('restart', () => this.exitGame());
 
