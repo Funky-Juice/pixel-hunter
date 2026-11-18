@@ -66,7 +66,7 @@ function copyHtml() {
 }
 
 function copyAssets() {
-  const sources = ['img/*.*'];
+  const sources = ['img/**/*.*'];
 
   if (fs.existsSync('fonts')) {
     sources.push('fonts/**/*.{woff,woff2}');
