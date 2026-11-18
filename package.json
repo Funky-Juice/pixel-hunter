@@ -53,8 +53,5 @@
   },
   "engines": {
     "node": ">=22"
-  },
-  "dependencies": {
-    "whatwg-fetch": "^3.6.20"
   }
 }

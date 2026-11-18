@@ -1,43 +1,50 @@
-import 'whatwg-fetch';
 import Application from './application';
+import questions from './data/questions';
 
-const BASE_API = 'https://es.dump.academy/pixel-hunter';
-const API = 'https://intensive-ecmascript-server-dxttmcdylw.now.sh/pixel-hunter/stats';
+const storageKey = (username) => `pixel-hunter:${username}`;
 
-const status = (response) => {
-  if (response.status >= '200' && response.status < 300) {
-    return response;
-  } else {
-    throw new Error(`${response.status} ${response.statusText}`);
+const readStats = (username) => {
+  const raw = window.localStorage.getItem(storageKey(username));
+
+  if (!raw) {
+    return [];
   }
+
+  const data = JSON.parse(raw);
+
+  if (!Array.isArray(data)) {
+    throw new Error('Некорректная статистика в localStorage');
+  }
+
+  return data;
 };
 
 export const getQuestions = () => {
-  window.fetch(`${BASE_API}/questions`)
-      .then(status)
-      .then((response) => response.json())
-      .then((data) => {
-        Application.data = data;
-      })
-      .then(() => Application.showIntro())
-      .catch((err) => Application.showError(err));
+  Application.data = questions;
+  Application.showIntro();
 };
 
 export const sendGameResult = (username, scores, result) => {
-  return window.fetch(`${API}/${username}`, {
-    method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify({
+  try {
+    const history = readStats(username);
+
+    history.push({
       stats: scores,
       lives: result.lives,
-    })
-  });
+      date: Date.now()
+    });
+    window.localStorage.setItem(storageKey(username), JSON.stringify(history));
+
+    return Promise.resolve();
+  } catch (err) {
+    return Promise.reject(err);
+  }
 };
 
 export const getGameStats = (username) => {
-  return window.fetch(`${API}/${username}`)
-      .then(status)
-      .then((response) => response.json())
-      .then((data) => data)
-      .catch((err) => console.log(err));
+  try {
+    return Promise.resolve(readStats(username));
+  } catch (err) {
+    return Promise.reject(err);
+  }
 };

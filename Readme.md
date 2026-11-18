@@ -14,16 +14,15 @@
 
 ## Данные
 
-Запросы через `whatwg-fetch` в [js/actions.js](js/actions.js):
+Вопросы — локальный массив в [js/data/questions.js](js/data/questions.js): 10 уровней в формате бывшего API, картинки из `img/paint/` и `img/photo/`.
 
-- вопросы — `https://es.dump.academy/pixel-hunter/questions`;
-- отправка результата и чтение статистики — `https://intensive-ecmascript-server-dxttmcdylw.now.sh/pixel-hunter/stats`.
+Статистика партий хранится в `localStorage` по имени игрока (ключ `pixel-hunter:<имя>`). Чтение и запись — в [js/actions.js](js/actions.js). Внешних серверов нет.
 
-Если вопросы не загрузились, показывается экран ошибки. Картинки уровней подготавливает адаптер в `js/image-loader/`.
+Если запись статистики не удалась, показывается экран ошибки. Картинки уровней подготавливает адаптер в `js/image-loader/`.
 
 ## Отличие от `master`
 
-На `master` шаблоны лежат в `js/template-modules/`, вопросы — в локальном `js/game-data.js`, плюс юнит-тесты module 4. Этих коммитов в данной ветке нет: игровой цикл написан заново и ходит на сервер.
+На `master` шаблоны лежат в `js/template-modules/`, вопросы — в локальном `js/game-data.js`, плюс юнит-тесты module 4. Этих коммитов в данной ветке нет: игровой цикл написан заново, вопросы и статистика локальные.
 
 ## Запуск
 
@@ -40,6 +39,3 @@ npm start
 - Babel 7 (`@babel/core` `^7.28.5`, `@babel/preset-env` `^7.28.5`)
 - Webpack `^5.102.1` и `webpack-stream` `^7.0.0`
 - ESLint `^8.57.1`
-- `whatwg-fetch` `^3.6.20`
-
-Учебные API 2019 года могут не отвечать.
